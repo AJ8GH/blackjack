@@ -130,6 +130,7 @@ module BlackJack
       it 'does nothing if deck is not empty' do
         dealer.deck.cards.clear
         dealer.deck.cards << ace
+        dealer.replenish_deck
         expect(dealer.deck.cards.count).to eq 1
       end
     end
