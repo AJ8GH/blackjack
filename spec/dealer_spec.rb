@@ -119,5 +119,13 @@ module BlackJack
         expect(dealer.deck.cards.count).to eq 49
       end
     end
+
+    context '#replenish_deck' do
+      it 'creates new deck if deck is empty' do
+        dealer.deck.cards.clear
+        dealer.replenish_deck
+        expect(dealer.deck.cards.count).to eq 52
+      end
+    end
   end
 end

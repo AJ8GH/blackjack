@@ -28,5 +28,9 @@ module BlackJack
     def deal
       deck.cards.delete_at(0)
     end
+
+    def replenish_deck
+      self.deck = Deck.new if deck.cards.empty?
+    end
   end
 end
