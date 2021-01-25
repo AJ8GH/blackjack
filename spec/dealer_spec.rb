@@ -5,6 +5,7 @@ module BlackJack
     let (:five) { Card.new(:five, :spades) }
     let (:ace) { Card.new(:ace, :hearts) }
     let (:other_ace) { Card.new(:ace, :clubs) }
+    let (:eight) { Card.new(:eight, :diamonds) }
 
     context '#initialize' do
       it 'initializes a new Dealer without arguments' do
@@ -50,6 +51,34 @@ module BlackJack
         dealer.calculate_score
         dealer.ace_adjust
         expect(dealer.score).to eq 17
+      end
+
+      it 'does nothing if no aces in hand' do
+        dealer.hand << king << five
+        dealer.calculate_score
+        dealer.ace_adjust
+        expect(dealer.score).to eq 15
+      end
+
+      it 'subtracts 10 if the hand is 2 aces only' do
+        dealer.hand << ace << other_ace
+        dealer.calculate_score
+        dealer.ace_adjust
+        expect(dealer.score).to eq 12
+      end
+
+      it 'does nothing if score is 21' do
+        dealer.hand << ace << king
+        dealer.calculate_score
+        dealer.ace_adjust
+        expect(dealer.score).to eq 21
+      end
+
+      it 'subtracts 10 if the hand is 2 aces and an eight' do
+        dealer.hand << ace << other_ace << eight
+        dealer.calculate_score
+        dealer.ace_adjust
+        expect(dealer.score).to eq 20
       end
     end
 
