@@ -19,12 +19,6 @@ module BlackJack
       end
     end
 
-    context '#deck' do
-      it 'has a deck on initialization' do
-        expect(game.deck.class).to eq Deck
-      end
-    end
-
     context '#hit_or_stick' do
       it 'gets a move from player' do
         allow_any_instance_of(Object).to receive(:gets) { 'hit' }

@@ -1,6 +1,6 @@
 module BlackJack
   describe Dealer do
-    subject (:dealer) { Dealer.new(Game.new(Player.new)) }
+    subject (:dealer) { Dealer.new }
     let (:king) { Card.new(:king, :hearts) }
     let (:five) { Card.new(:five, :spades) }
     let (:ace) { Card.new(:ace, :hearts) }
@@ -8,8 +8,8 @@ module BlackJack
     let (:eight) { Card.new(:eight, :diamonds) }
 
     context '#initialize' do
-      it 'initializes a new Dealer with game argument' do
-        expect{ Dealer.new(Game.new(Player.new)) }.to_not raise_error
+      it 'initializes a new Dealer without arguments' do
+        expect{ Dealer.new }.to_not raise_error
       end
     end
 
@@ -22,6 +22,12 @@ module BlackJack
     context '#score' do
       it 'returns the score' do
         expect(dealer.score).to eq 0
+      end
+    end
+
+    context '#deck' do
+      it 'has a deck on initialization' do
+        expect(dealer.deck.class).to eq Deck
       end
     end
 
@@ -99,9 +105,8 @@ module BlackJack
     end
 
     context '#deal' do
-      it 'puts card in player hand if move is hit' do
-        dealer.deal(:hit)
-        expect(dealer.game.player.hand.count).to eq 1
+      it 'returns a card' do
+        expect(dealer.deal.class).to eq Card
       end
 
       # it removes the card from the deck do

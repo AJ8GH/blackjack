@@ -1,11 +1,11 @@
 module BlackJack
   class Dealer
-    attr_accessor :hand, :score, :game
+    attr_accessor :hand, :score, :deck
 
-    def initialize(game)
-      @game = game
+    def initialize
       @hand = []
       @score = 0
+      @deck = Deck.new
     end
 
     def calculate_score
@@ -25,8 +25,8 @@ module BlackJack
       hand.map(&:value).count(:ace)
     end
 
-    def deal(move)
-      game.player.hand << game.deck.cards.delete_at(0) if move == :hit
+    def deal
+      deck.cards.delete_at(0)
     end
   end
 end
