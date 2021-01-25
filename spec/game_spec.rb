@@ -2,6 +2,8 @@ module BlackJack
   describe Game do
     subject (:game) { Game.new(Player.new) }
     let (:ace) { Card.new(:ace, :spades) }
+    let (:eight) { Card.new(:eight, :clubs) }
+    let (:expected_output) { "Your hand:\nEight of Clubs\nAce of Spades\n\n" }
 
     context '#initalize' do
       it 'creates new game' do
@@ -71,6 +73,13 @@ module BlackJack
     context '#card_name' do
       it 'converts card symbols to string name' do
         expect(game.card_name(ace)).to eq "Ace of Spades"
+      end
+    end
+
+    context '#show_cards' do
+      it 'shows persons hand' do
+        game.player.hand << eight << ace
+        expect { game.show_cards(game.player) }.to output(expected_output).to_stdout
       end
     end
   end

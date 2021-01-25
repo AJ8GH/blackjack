@@ -25,10 +25,11 @@ module BlackJack
       2.times { get_card; assign_card(person) }
     end
 
-    def show_cards
-      player_hand = player.hand.map(&:value)
-      dealer_hand = dealer.hand.map(&:value)
-      puts "Player:\n#{player_hand}\n\nHouse:\n*hidden*\n#{dealer_hand.last}"
+    def show_cards(person)
+      person.class == Player ? intro = 'Your hand:' : intro = 'House:\n'
+      puts intro
+      puts person.hand.map { |card| card_name(card) }
+      puts
     end
 
     def card_name(card)
