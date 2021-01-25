@@ -4,6 +4,7 @@ module BlackJack
     def initialize
       @cards = []
       build
+      shuffle_deck
     end
 
     def build
@@ -12,6 +13,10 @@ module BlackJack
           cards << Card.new(value, suit)
         end
       end
+    end
+
+    def shuffle_deck
+      @cards = cards.shuffle
     end
   end
 end

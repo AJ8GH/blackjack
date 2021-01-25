@@ -20,5 +20,14 @@ module BlackJack
         expect(deck.cards.count).to eq 104
       end
     end
+
+    context '#shuffle_deck' do
+      it 'shuffles the deck' do
+        deck.cards.clear; deck.build
+        cards = deck.cards
+        deck.shuffle_deck
+        expect(deck.cards).not_to eq cards
+      end
+    end
   end
 end
