@@ -1,6 +1,7 @@
 module BlackJack
   describe Dealer do
     subject (:dealer) { Dealer.new }
+    
     context '#initialize' do
       it 'initializes a new Dealer without arguments' do
         expect{ Dealer.new }.to_not raise_error
