@@ -1,6 +1,6 @@
 module BlackJack
   class Deck
-    attr_reader :cards
+    attr_accessor :cards
     def initialize
       @cards = []
       build
@@ -9,14 +9,12 @@ module BlackJack
 
     def build
       SUITS.each do |suit|
-        VALUES.each do |value|
-          cards << Card.new(value, suit)
-        end
+        VALUES.each { |value| cards << Card.new(value, suit) }
       end
     end
 
     def shuffle_deck
-      @cards = cards.shuffle
+      self.cards = cards.shuffle
     end
   end
 end
