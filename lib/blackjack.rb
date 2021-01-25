@@ -7,23 +7,8 @@ module BlackJack
 
   SUITS = [:spades, :hearts, :diamonds, :clubs]
 
-  VALUES = [
-    :ace,
-    :two,
-    :three,
-    :four,
-    :five,
-    :six,
-    :seven,
-    :eight,
-    :nine,
-    :ten,
-    :jack,
-    :queen,
-    :king
-  ]
-
-  SCORE = {
+  VALUES = {
+    ace:    11,
     two:    2,
     three:  3,
     four:   4,
@@ -35,7 +20,6 @@ module BlackJack
     ten:    10,
     jack:   10,
     queen:  10,
-    king:   10,
-    ace:    11
+    king:   10
   }
 end
