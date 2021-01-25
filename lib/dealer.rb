@@ -1,11 +1,11 @@
 module BlackJack
   class Dealer
-    attr_accessor :hand, :score, :deck
+    attr_accessor :deck, :hand, :score
 
     def initialize
+      @deck = Deck.new
       @hand = []
       @score = 0
-      @deck = Deck.new
     end
 
     def calculate_score
@@ -34,4 +34,4 @@ module BlackJack
       self.deck = Deck.new if deck.cards.empty?
     end
   end
-end 
+end
