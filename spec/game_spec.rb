@@ -42,10 +42,16 @@ module BlackJack
     end
 
     context '#assign_card' do
-      it 'puts card in their hand' do
+      it 'puts card in player hand' do
         game.get_card
         game.assign_card(game.player)
         expect(game.player.hand.first).to eq game.card
+      end
+
+      it 'puts a card in dealer hand' do
+        game.get_card
+        game.assign_card(game.dealer)
+        expect(game.dealer.hand.first).to eq game.card
       end
     end
   end
