@@ -2,11 +2,11 @@ require_relative 'dealer'
 require_relative 'deck'
 
 module BlackJack
-  Card = Struct.new(:number, :suit)
+  Card = Struct.new(:value, :suit)
 
   SUITS = [:spades, :hearts, :diamonds, :clubs]
 
-  NUMBERS = [
+  VALUES = [
     :ace,
     :two,
     :three,
