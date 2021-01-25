@@ -10,6 +10,9 @@ module BlackJack
       hand.map(&:value).map(&VALUES).sum
     end
 
-    # def ace_adjust
+    def ace_adjust
+      number_if_aces = score > 21
+
+    end
   end
 end
