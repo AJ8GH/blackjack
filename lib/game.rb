@@ -8,7 +8,7 @@ module BlackJack
     end
 
     def hit_or_stick
-      gets.chomp.downcase.to_sym
+      move = gets.chomp.downcase.to_sym
     end
   end
 end
