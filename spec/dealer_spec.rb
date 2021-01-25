@@ -6,9 +6,9 @@ describe Dealer do
     end
   end
 
-  # context '#hand' do
-  #   it 'begins game empty' do
-  #     expect(dealer.hand).to eq []
-  #   end
-  # end
+  context '#hand' do
+    it 'begins game empty' do
+      expect(dealer.hand).to eq []
+    end
+  end
 end
