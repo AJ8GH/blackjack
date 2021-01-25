@@ -66,6 +66,11 @@ module BlackJack
         game.initial_deal(game.player)
         expect(game.player.hand.count).to eq 2
       end
+
+      it 'deals 2 cards to the dealer' do
+        game.initial_deal(game.dealer)
+        expect(game.dealer.hand.count).to eq 2
+      end
     end
   end
 end
