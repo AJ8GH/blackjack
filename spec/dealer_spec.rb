@@ -109,10 +109,15 @@ module BlackJack
         expect(dealer.deal.class).to eq Card
       end
 
-      # it removes the card from the deck do
-      #   dealer.deal(:hit)
-      #   expect(dealer.game.deck.cards.count).to eq 51
-      # end
+      it 'removes the card from the deck' do
+        dealer.deal
+        expect(dealer.deck.cards.count).to eq 51
+      end
+
+      it 'removes card from deck each deal' do
+        dealer.deal; dealer.deal; dealer.deal
+        expect(dealer.deck.cards.count).to eq 49
+      end
     end
   end
 end
