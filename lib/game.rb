@@ -6,8 +6,9 @@ module BlackJack
       @dealer = Dealer.new
       @deck = Deck.new
     end
+
+    def hit_or_stick
+      gets.chomp.downcase.to_sym
+    end
   end
 end
-
-# def hit_or_stick
-#   move = gets.chomp

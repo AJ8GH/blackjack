@@ -21,8 +21,8 @@ module BlackJack
 
     context '#hit_or_stick' do
       it 'gets a move from player' do
-        allow_any_instance_of(Dealer).to receive(:gets) { 'hit' }
-        expect(hit_or_stick).to eq :hit
+        allow_any_instance_of(Object).to receive(:gets) { 'hit' }
+        expect(game.hit_or_stick).to eq :hit
       end
     end
   end
