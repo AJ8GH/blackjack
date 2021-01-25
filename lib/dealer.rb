@@ -11,10 +11,6 @@ module BlackJack
       self.score = hand.map(&:value).map(&VALUES).sum
     end
 
-    def calculate_score
-      self.score = hand.map(&:value).map(&VALUES).sum
-    end
-
     def ace_adjust
       if score > 21
         number_of_aces.times do

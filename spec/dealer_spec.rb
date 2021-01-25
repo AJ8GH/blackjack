@@ -38,11 +38,18 @@ module BlackJack
     end
 
     context '#ace_adjust' do
-      it 'adjusts ace to 1 if player busts with one ace' do
+      it 'subtracts 10 from score if dealer busts with one ace' do
         dealer.hand << king << five << ace
         dealer.calculate_score
         dealer.ace_adjust
         expect(dealer.score).to eq 16
+      end
+
+      it 'subtracts 20 from hand if dealer busts with 2 aces' do
+        dealer.hand << ace << other_ace << king << five
+        dealer.calculate_score
+        dealer.ace_adjust
+        expect(dealer.score).to eq 17
       end
     end
 
