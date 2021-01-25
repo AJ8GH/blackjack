@@ -1,11 +1,12 @@
 module BlackJack
   class Game
-    attr_accessor :player, :dealer, :move
+    attr_accessor :player, :dealer, :move, :card
 
     def initialize(player)
       @player = player
       @dealer = Dealer.new
       @move = nil
+      @card = nil
     end
 
     def hit_or_stick
@@ -13,7 +14,11 @@ module BlackJack
     end
 
     def get_card
-      dealer.deal
+      self.card = dealer.deal
+    end
+
+    def assign_card(person)
+      person.hand << card
     end
   end
 end

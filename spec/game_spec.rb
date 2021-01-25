@@ -1,7 +1,7 @@
 module BlackJack
   describe Game do
     subject (:game) { Game.new(Player.new) }
-    
+
     context '#initalize' do
       it 'creates new game' do
         expect { Game.new(Player.new) }.to_not raise_error
@@ -38,6 +38,14 @@ module BlackJack
     context '#get_card' do
       it 'gets card from dealer' do
         expect(game.get_card.class).to eq Card
+      end
+    end
+
+    context '#assign_card' do
+      it 'puts card in their hand' do
+        game.get_card
+        game.assign_card(game.player)
+        expect(game.player.hand.first).to eq game.card
       end
     end
   end
