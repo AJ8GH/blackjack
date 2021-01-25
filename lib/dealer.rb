@@ -34,4 +34,4 @@ module BlackJack
       self.deck = Deck.new if deck.cards.empty?
     end
   end
-end
+end 
