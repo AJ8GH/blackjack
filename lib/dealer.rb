@@ -1,8 +1,9 @@
 module BlackJack
   class Dealer
-    attr_accessor :hand, :score
+    attr_accessor :hand, :score, :game
 
-    def initialize
+    def initialize(game)
+      @game = game
       @hand = []
       @score = 0
     end

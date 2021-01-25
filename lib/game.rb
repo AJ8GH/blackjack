@@ -4,7 +4,7 @@ module BlackJack
 
     def initialize(player)
       @player = player
-      @dealer = Dealer.new
+      @dealer = Dealer.new(self)
       @deck = Deck.new
       @move = nil
     end
