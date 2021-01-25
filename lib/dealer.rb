@@ -24,5 +24,9 @@ module BlackJack
     def number_of_aces
       hand.map(&:value).count(:ace)
     end
+
+    def deal(move)
+      game.player.hand << game.deck.cards.delete_at(0) if move == :hit
+    end
   end
 end

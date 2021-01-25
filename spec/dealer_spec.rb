@@ -98,11 +98,16 @@ module BlackJack
       end
     end
 
-    # context '#deal' do
-    #   it 'puts card in player hand if move is hit' do
-    #     dealer.deal(:hit)
-    #     expect
-    #   end
-    # end
+    context '#deal' do
+      it 'puts card in player hand if move is hit' do
+        dealer.deal(:hit)
+        expect(dealer.game.player.hand.count).to eq 1
+      end
+
+      # it removes the card from the deck do
+      #   dealer.deal(:hit)
+      #   expect(dealer.game.deck.cards.count).to eq 51
+      # end
+    end
   end
 end
