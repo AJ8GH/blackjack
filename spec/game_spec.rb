@@ -1,9 +1,15 @@
 module BlackJack
   describe Game do
-    subject (:game) { Game.new }
+    subject (:game) { Game.new(Player.new) }
     context '#initalize' do
       it 'creates new game' do
-        expect { Game.new }.to_not raise_error
+        expect { Game.new(Player.new) }.to_not raise_error
+      end
+    end
+
+    context '#Player' do
+      it 'takes player as argument' do
+        expect(game.player.class).to eq Player
       end
     end
 

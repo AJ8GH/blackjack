@@ -1,8 +1,9 @@
 module BlackJack
   class Game
-    attr_accessor :dealer, :deck, :move
+    attr_accessor :player, :dealer, :deck, :move
 
-    def initialize
+    def initialize(player)
+      @player = player
       @dealer = Dealer.new
       @deck = Deck.new
       @move = nil
