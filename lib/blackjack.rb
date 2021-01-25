@@ -1,5 +1,6 @@
 require_relative 'dealer'
 require_relative 'deck'
+require_relative 'player'
 
 module BlackJack
   Card = Struct.new(:value, :suit)
