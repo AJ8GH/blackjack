@@ -1,6 +1,7 @@
 module BlackJack
   describe Game do
     subject (:game) { Game.new(Player.new) }
+    let (:ace) { Card.new(:ace, :spades) }
 
     context '#initalize' do
       it 'creates new game' do
@@ -55,12 +56,6 @@ module BlackJack
       end
     end
 
-    context '#start_game' do
-      it 'begins a new game' do
-        expect(game.start_game.class).to eq Game
-      end
-    end
-
     context '#initial_deal' do
       it 'deals 2 cards to the player' do
         game.initial_deal(game.player)
@@ -70,6 +65,12 @@ module BlackJack
       it 'deals 2 cards to the dealer' do
         game.initial_deal(game.dealer)
         expect(game.dealer.hand.count).to eq 2
+      end
+    end
+
+    context '#card_name' do
+      it 'converts card symbols to string name' do
+        expect(game.card_name(ace)).to eq "Ace of Spades"
       end
     end
   end
