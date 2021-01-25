@@ -26,6 +26,7 @@ module BlackJack
     end
 
     def deal
+      replenish_deck
       deck.cards.delete_at(0)
     end
 
