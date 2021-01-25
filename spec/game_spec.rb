@@ -5,9 +5,11 @@ module BlackJack
       it 'creates new game' do
         expect { Game.new }.to_not raise_error
       end
+    end
 
-      it 'instantiates a dealer' do
-        expect(game.dealer).to be true
+    context '#dealer' do
+      it 'Game.new instantiates a dealer' do
+        expect(game.dealer.class).to eq Dealer
       end
     end
 
