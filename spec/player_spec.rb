@@ -20,9 +20,17 @@ module BlackJack
       it 'returns 0 for empty hand' do
         expect(player.score).to eq 0
       end
+    end
 
+    context '#calculate_score' do
       it 'returns 20 for jack, ten' do
         player.hand << jack << ten
+        expect(player.calculate_score).to eq 20
+      end
+
+      it 'updates the score' do
+        player.hand << jack << ten
+        player.calculate_score
         expect(player.score).to eq 20
       end
     end

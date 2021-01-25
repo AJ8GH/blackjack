@@ -1,17 +1,27 @@
 module BlackJack
   class Dealer
-    attr_accessor :hand
+    attr_accessor :hand, :score
 
     def initialize
       @hand = []
+      @score = 0
     end
 
-    def score
-      hand.map(&:value).map(&VALUES).sum
+    def calculate_score
+      self.score = hand.map(&:value).map(&VALUES).sum
+    end
+
+    def calculate_score
+      self.score = hand.map(&:value).map(&VALUES).sum
     end
 
     def ace_adjust
-      # score > 21
+      if score > 21
+        number_of_aces.times do
+          self.score -= 10
+          break if score <= 21
+        end
+      end
     end
 
     def number_of_aces

@@ -1,13 +1,10 @@
 module BlackJack
   class Player < Dealer
-    attr_accessor :hand
+    attr_accessor :hand, :score
 
     def initialize
       @hand = []
-    end
-
-    def score
-      hand.map(&:value).map(&VALUES).sum
+      @score = 0
     end
   end
 end
