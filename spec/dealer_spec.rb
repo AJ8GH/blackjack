@@ -29,15 +29,22 @@ module BlackJack
         dealer.hand << king << five
         expect(dealer.calculate_score).to eq 15
       end
+
+      it 'updates the score' do
+        dealer.hand << king << five
+        dealer.calculate_score
+        expect(dealer.score).to eq 15
+      end
     end
 
-    # context '#ace_adjust' do
-    #   it 'adjusts ace to 1 if player busts with one ace' do
-    #     dealer.hand << king << five << ace
-    #     dealer.ace_adjust
-    #     expect(dealer.score).to eq 16
-    #   end
-    # end
+    context '#ace_adjust' do
+      it 'adjusts ace to 1 if player busts with one ace' do
+        dealer.hand << king << five << ace
+        dealer.calculate_score
+        dealer.ace_adjust
+        expect(dealer.score).to eq 16
+      end
+    end
 
     context '#number of aces' do
       it 'counts 0 for empty hand' do
