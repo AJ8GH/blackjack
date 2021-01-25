@@ -1,10 +1,10 @@
 module BlackJack
   class Game
-    attr_reader :dealer
-    
+    attr_accessor :dealer, :deck
+
     def initialize
       @dealer = Dealer.new
-
+      @deck = Deck.new
     end
   end
 end

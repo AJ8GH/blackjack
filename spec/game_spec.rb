@@ -8,8 +8,14 @@ module BlackJack
     end
 
     context '#dealer' do
-      it 'Game.new instantiates a dealer' do
+      it 'has a dealer on initialization' do
         expect(game.dealer.class).to eq Dealer
+      end
+    end
+
+    context '#deck' do
+      it 'has a deck on initialization' do
+        expect(game.deck.class).to eq Deck
       end
     end
 
