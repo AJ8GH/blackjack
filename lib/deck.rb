@@ -9,7 +9,7 @@ module BlackJack
     def build
       SUITS.each do |suit|
         VALUES.each do |value|
-          cards << Card.new(suit, value)
+          cards << Card.new(value, suit)
         end
       end
     end
