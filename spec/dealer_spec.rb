@@ -3,6 +3,7 @@ module BlackJack
     subject (:dealer) { Dealer.new }
     let (:king) { Card.new(:king, :hearts) }
     let (:five) { Card.new(:five, :spades) }
+    let (:ace) {Card.new(:ace, :hearts) }
 
     context '#initialize' do
       it 'initializes a new Dealer without arguments' do
@@ -24,6 +25,13 @@ module BlackJack
       it 'returns 15 for king and 5' do
         dealer.hand << king << five
         expect(dealer.score).to eq 15
+      end
+    end
+
+    context '#ace_adjust' do
+      it 'adjusts ace to 1 if player busts with an ace' do
+        dealer.hand << king << five << ace
+        expect(dealer.score).to be 16
       end
     end
   end

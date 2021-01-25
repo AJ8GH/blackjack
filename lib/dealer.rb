@@ -9,5 +9,7 @@ module BlackJack
     def score
       hand.map(&:value).map(&VALUES).sum
     end
+
+    # def ace_adjust
   end
 end
