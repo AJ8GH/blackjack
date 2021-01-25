@@ -3,7 +3,8 @@ module BlackJack
     subject (:dealer) { Dealer.new }
     let (:king) { Card.new(:king, :hearts) }
     let (:five) { Card.new(:five, :spades) }
-    let (:ace) {Card.new(:ace, :hearts) }
+    let (:ace) { Card.new(:ace, :hearts) }
+    let (:other_ace) { Card.new(:ace, :clubs) }
 
     context '#initialize' do
       it 'initializes a new Dealer without arguments' do
@@ -38,6 +39,16 @@ module BlackJack
     context '#number of aces' do
       it 'counts 0 for empty hand' do
         expect(dealer.number_of_aces).to eq 0
+      end
+
+      it 'returns 1 for 1 ace' do
+        dealer.hand << ace << five
+        expect(dealer.number_of_aces).to eq 1
+      end
+
+      it 'returns 2 for 2 aces' do
+        dealer.hand << ace << five << other_ace << king
+        expect(dealer.number_of_aces).to eq 2
       end
     end
   end

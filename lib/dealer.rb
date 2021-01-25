@@ -11,8 +11,11 @@ module BlackJack
     end
 
     def ace_adjust
-      number_if_aces = score > 21
+      # score > 21
+    end
 
+    def number_of_aces
+      hand.map(&:value).count(:ace)
     end
   end
 end
