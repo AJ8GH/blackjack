@@ -6,6 +6,12 @@ module BlackJack
       it 'initializes with 52 cards' do
         expect(deck.cards.count).to eq 52
       end
+
+      it 'shuffles the deck' do
+        cards = deck.cards
+        deck.cards.clear; deck.build
+        expect(deck.cards).to_not eq cards
+      end
     end
 
     context '#cards' do
