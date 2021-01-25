@@ -54,5 +54,11 @@ module BlackJack
         expect(game.dealer.hand.first).to eq game.card
       end
     end
+
+    context '#start_game' do
+      it 'begins a new game' do
+        expect(game.start_game.class).to eq Game
+      end
+    end
   end
 end

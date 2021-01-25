@@ -20,5 +20,9 @@ module BlackJack
     def assign_card(person)
       person.hand << card
     end
+
+    def start_game
+      Game.new(Player.new)
+    end
   end
 end
