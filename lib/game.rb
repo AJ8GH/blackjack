@@ -24,5 +24,9 @@ module BlackJack
     def start_game
       Game.new(Player.new)
     end
+
+    def initial_deal(person)
+      2.times { get_card; assign_card(person) }
+    end
   end
 end

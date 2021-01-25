@@ -60,5 +60,12 @@ module BlackJack
         expect(game.start_game.class).to eq Game
       end
     end
+
+    context '#initial_deal' do
+      it 'deals 2 cards to the player' do
+        game.initial_deal(game.player)
+        expect(game.player.hand.count).to eq 2
+      end
+    end
   end
 end
