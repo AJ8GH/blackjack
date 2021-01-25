@@ -8,9 +8,8 @@ module BlackJack
       end
 
       it 'shuffles the deck' do
-        cards = deck.cards
-        deck.cards.clear; deck.build
-        expect(deck.cards).to_not eq cards
+        other_deck = Deck.new
+        expect(deck.cards).not_to eq other_deck.cards
       end
     end
 
