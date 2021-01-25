@@ -11,5 +11,11 @@ module BlackJack
         expect(card.value).to eq :ace
       end
     end
+
+    context '#suit' do
+      it 'returns the card suit' do
+        expect(card.suit).to eq :spades
+      end
+    end
   end
 end
