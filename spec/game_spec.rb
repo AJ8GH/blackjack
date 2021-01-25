@@ -29,6 +29,7 @@ module BlackJack
     context '#move' do
       it 'stores/returns the move' do
         allow_any_instance_of(Object).to receive(:gets) { 'hit' }
+        game.hit_or_stick
         expect(game.move).to eq :hit
       end
     end

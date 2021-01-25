@@ -1,14 +1,15 @@
 module BlackJack
   class Game
-    attr_accessor :dealer, :deck
+    attr_accessor :dealer, :deck, :move
 
     def initialize
       @dealer = Dealer.new
       @deck = Deck.new
+      @move = nil
     end
 
     def hit_or_stick
-      move = gets.chomp.downcase.to_sym
+      self.move = gets.chomp.downcase.to_sym
     end
   end
 end
