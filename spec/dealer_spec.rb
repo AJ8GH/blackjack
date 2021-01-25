@@ -1,6 +1,8 @@
 module BlackJack
   describe Dealer do
     subject (:dealer) { Dealer.new }
+    let (:king) { Card.new(:king, :hearts) }
+    let (:five) { Card.new(:five, :spades) }
 
     context '#initialize' do
       it 'initializes a new Dealer without arguments' do
@@ -11,6 +13,17 @@ module BlackJack
     context '#hand' do
       it 'begins game empty' do
         expect(dealer.hand).to eq []
+      end
+    end
+
+    context '#score' do
+      it 'returns 0 for empty hand' do
+        expect(dealer.score).to eq 0
+      end
+
+      it 'returns 15 for king and 5' do
+        dealer.hand << king << five
+        expect(dealer.score).to eq 15
       end
     end
   end
