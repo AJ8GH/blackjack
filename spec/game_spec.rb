@@ -142,9 +142,10 @@ module BlackJack
       end
     end
 
-    context '' do
-      it ' ' do
-
+    context '#dealer_17' do
+      it 'returns true when dealer score > 17' do
+        game.dealer.hand << eight << ten
+        expect(game.dealer_17).to be true
       end
     end
   end

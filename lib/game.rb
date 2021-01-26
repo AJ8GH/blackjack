@@ -43,6 +43,9 @@ module BlackJack
       person.score > 21
     end
 
+    def dealer_17
+    end
+
     def show_hand(person)
       puts hand_intro(person)
       puts person.hand.map { |card| card_name(card) }
@@ -82,12 +85,14 @@ module BlackJack
       end
     end
 
-    # def dealer_game_logic
-    #   while true
-    #
-    #     dealer
-    #   end
-    # end
+    def dealer_game_logic
+      while true
+        show_hand(dealer)
+
+        dealer
+
+      end
+    end
 
     def play_again
       puts "Play again? Hit 'y' for yes, any key for no:"
@@ -115,6 +120,7 @@ module BlackJack
       unless blackjack?(player)
         player_game_logic
       end
+      show_hand
     end
   end
 end
