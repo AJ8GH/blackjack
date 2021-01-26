@@ -10,6 +10,7 @@ module BlackJack
     end
 
     def hit_or_stand
+      puts "Hit or stand?"
       self.move = gets.chomp.downcase.to_sym
     end
 
@@ -52,8 +53,39 @@ module BlackJack
 
     def player_game_logic
       unless player.score == 21
-        hit_or_stand
+        while true
+          hit_or_stand
+          if move == :hit
+            get_card
+            assign_card(player)
+            show_hand(player)
+            score = player.calculate_score
+            puts "score: #{score}"
+            if score > 21
+              puts "Bust"
+              run_game if play_again == 'y'
+            end
+            break if score == 21
+          end
+        end
       end
+    end
+
+    def play_again
+      puts "Play again? y/n"
+      gets.chomp
+    end
+
+    def start_game
+      players = [game.player, game.dealer]
+      players.each { |person| game.initial_deal(person) }
+    end
+
+    def run_game
+      start_game
+      show_hand(player)
+      show_dealer_hand
+      player_game_logic
     end
   end
 end
