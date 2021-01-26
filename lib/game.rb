@@ -36,7 +36,11 @@ module BlackJack
     end
 
     def blackjack?(person)
-      person.score == 21
+      person.calculate_score == 21
+    end
+
+    def bust?(person)
+      person.calculate_score > 21
     end
 
     def show_hand(person)
