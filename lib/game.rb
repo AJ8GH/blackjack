@@ -11,7 +11,7 @@ module BlackJack
     end
 
     def hit_or_stand
-      puts "Hit or stand?"
+      puts "Hit or stand? (h/s)"
       self.move = gets.chomp.downcase.to_sym
     end
 
@@ -70,7 +70,7 @@ module BlackJack
       show_hand(player)
       player.show_score
       if player.blackjack?
-        blackjack_statement
+        puts puts "BlackJack!"
         reveal_dealer_hand
         show_hand(dealer)
       else
@@ -90,7 +90,7 @@ module BlackJack
     def player_game_logic
       while true
         hit_or_stand
-        if move == :hit
+        if move == :h
           deal_card_to(player)
           show_hand(player)
           puts player.show_score
@@ -100,7 +100,7 @@ module BlackJack
           elsif player.twenty_one?
             break
           end
-        elsif move == :stand
+        elsif move == :s
           puts player.show_score; break
         end
       end
@@ -162,11 +162,6 @@ module BlackJack
 
     def initiate_deal
       puts "⏎ to deal"
-      gets
-    end
-
-    def blackjack_statement
-      puts "BlackJack! ⏎ to reveal dealer's hand".double_line_break
       gets
     end
 
