@@ -142,11 +142,5 @@ module BlackJack
         expect(game.result).to eq :win
       end
     end
-
-    # contex '#' do
-    #   it '' do
-    #
-    #   end
-    # end
   end
 end
