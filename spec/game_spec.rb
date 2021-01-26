@@ -133,5 +133,20 @@ module BlackJack
         expect(game.player.score.zero? && game.dealer.score.zero?).to be true
       end
     end
+
+    context '#result' do
+      it 'returns win if player wins' do
+        game.dealer.hand << ten << eight
+        game.player.hand << ten << ace
+        game.players.each(&:calculate_score)
+        expect(game.result).to eq :win
+      end
+    end
+
+    # contex '#' do
+    #   it '' do
+    #
+    #   end
+    # end
   end
 end

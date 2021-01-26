@@ -14,7 +14,10 @@ module BlackJack
     end
 
     def replenish_deck
-      self.deck = Deck.new if deck.cards.empty?
+      if deck.cards.empty?
+        self.deck = Deck.new
+        puts 'New deck'
+      end
     end
 
     def calculate_score

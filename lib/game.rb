@@ -60,7 +60,6 @@ module BlackJack
       start_game
       show_dealer_hand
       show_hand(player)
-      [player, dealer].each(&:calculate_score)
       unless player.blackjack?
         player_game_logic
       end
@@ -68,7 +67,7 @@ module BlackJack
       unless dealer.dealer_stand?
         dealer_game_logic
       end
-      
+      win
     end
 
     def player_game_logic
@@ -104,6 +103,7 @@ module BlackJack
 
     def start_game
       players.each { |person| initial_deal(person) }
+      players.each(&:calculate_score)
     end
 
     def play_again
@@ -125,6 +125,12 @@ module BlackJack
       else
         exit
       end
+    end
+
+    def result
+      player_score, dealer_score = players.map(&:score)
+      player_score > dealer_score ? :win :
+      player_score < dealer_score ? :lose : :push
     end
   end
 end
