@@ -1,8 +1,8 @@
 # ♦︎ ♧ ♥︎ ♤ BLACKJACK ♤ ♥︎ ♧ ♦︎
-[![Build Status](https://travis-ci.com/AJ8GH/blackjack.svg?branch=master)](https://travis-ci.com/AJ8GH/blackjack)
+[![Build Status](https://travis-ci.com/AJ8GH/blackjack.svg?branch=master)](https://travis-ci.com/AJ8GH/blackjack) [![Coverage Status](https://coveralls.io/repos/github/AJ8GH/blackjack/badge.svg?branch=master)](https://coveralls.io/github/AJ8GH/blackjack?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/b5ee28ef64bf8bbcf291/maintainability)](https://codeclimate.com/github/AJ8GH/blackjack/maintainability)
 
-![blackjack](https://www.pinnacle.com/Cms_Data/Contents/Guest/Media/betting-articles/casino/Blackjack/article-how-to-play-blackjack-hero.jpg) [![Maintainability](https://api.codeclimate.com/v1/badges/b5ee28ef64bf8bbcf291/maintainability)](https://codeclimate.com/github/AJ8GH/blackjack/maintainability)
 
+![blackjack](https://www.pinnacle.com/Cms_Data/Contents/Guest/Media/betting-articles/casino/Blackjack/article-how-to-play-blackjack-hero.jpg)
 ## GETTING STARTED
 
 Clone repo:
