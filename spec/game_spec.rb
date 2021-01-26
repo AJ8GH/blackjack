@@ -113,5 +113,25 @@ module BlackJack
         expect(game.player.hand.count).to eq 1
       end
     end
+
+    context '#reset_hands' do
+      it 'empties both hands' do
+        game.player.hand << ace << ten << five
+        game.dealer.hand << ace << ten << five
+        game.reset_hands
+        expect(game.player.hand.empty?).to be true
+        expect(game.dealer.hand.empty?).to be true
+      end
+    end
+
+    context '#reset_scores' do
+      it 'resets both scores to 0' do
+        game.player.hand << ace << ten << five
+        game.dealer.hand << ace << ten << five
+        game.players.each(&:calculate_score)
+        game.reset_scores
+        expect(game.player.score.zero? && game.dealer.score.zero?).to be true
+      end
+    end
   end
 end

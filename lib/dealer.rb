@@ -23,19 +23,6 @@ module BlackJack
       score
     end
 
-    def ace_adjust
-      if score > 21
-        number_of_aces.times do
-          self.score -= 10
-          break if score <= 21
-        end
-      end
-    end
-
-    def number_of_aces
-      hand.map(&:value).count(:ace)
-    end
-
     def show_score
       "score: #{calculate_score}"
     end
@@ -50,6 +37,19 @@ module BlackJack
 
     def dealer_stand?
       score >= 17
+    end
+
+    def ace_adjust
+      if score > 21
+        number_of_aces.times do
+          self.score -= 10
+          break if score <= 21
+        end
+      end
+    end
+
+    def number_of_aces
+      hand.map(&:value).count(:ace)
     end
   end
 end

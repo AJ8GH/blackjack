@@ -1,10 +1,11 @@
 module BlackJack
   class Game
-    attr_accessor :player, :dealer, :move, :card
+    attr_accessor :player, :dealer, :move, :card, :players
 
     def initialize(player)
       @player = player
       @dealer = Dealer.new
+      @players = [player, dealer]
       @move = nil
       @card = nil
     end
@@ -55,6 +56,21 @@ module BlackJack
       name.to_s.capitalize
     end
 
+    def run_game
+      start_game
+      show_dealer_hand
+      show_hand(player)
+      [player, dealer].each(&:calculate_score)
+      unless player.blackjack?
+        player_game_logic
+      end
+      show_hand(dealer)
+      unless dealer.dealer_stand?
+        dealer_game_logic
+      end
+      
+    end
+
     def player_game_logic
       while true
         hit_or_stand
@@ -62,50 +78,53 @@ module BlackJack
           deal_card_to(player)
           show_hand(player)
           puts player.show_score
-          puts "Bust"; end_game if bust?(player)
-          break if blackjack?(player)
+          if player.bust?
+            puts "Bust, house wins!"; end_game
+          elsif player.blackjack?
+            break
+          end
         elsif move == :stand
-          puts score(player); break
+          puts player.show_score; break
         end
       end
     end
 
     def dealer_game_logic
       while true
+        deal_card_to(dealer)
         show_hand(dealer)
-
-        dealer
-
-      end
-    end
-
-    def play_again
-      puts "Play again? Hit 'y' for yes, any key for no:"
-      gets.chomp
-    end
-
-    def end_game
-      if play_again == 'y'
-        run_game
-      else
-        exit
+        puts dealer.show_score
+        if dealer.bust?
+          puts "Bust, player wins!"; end_game
+        elsif dealer.dealer_stand?
+          break
+        end
       end
     end
 
     def start_game
-      players = [game.player, game.dealer]
-      players.each { |person| game.initial_deal(person) }
+      players.each { |person| initial_deal(person) }
     end
 
-    def run_game
-      start_game
-      show_hand(player)
-      show_dealer_hand
-      [player, dealer].each { |person| calculate_score(person) }
-      unless blackjack?(player)
-        player_game_logic
+    def play_again
+      puts "Play again? Enter 'y' for yes, return for no:"
+      gets.chomp
+    end
+
+    def reset_hands
+      players.each { |player| player.hand.clear }
+    end
+
+    def reset_scores
+      players.each { |player| player.score = 0 }
+    end
+
+    def end_game
+      if play_again == 'y'
+        reset_hands; reset_scores; run_game
+      else
+        exit
       end
-      show_hand
     end
   end
 end
