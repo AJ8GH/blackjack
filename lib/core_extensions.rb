@@ -1,24 +1,24 @@
 # String methods to create card like visual output
 class String
   def cardify
-    self.pad.edge.red_adjust.border
+    self.pad_with_space.card_edge.black_suit_adjust.card_border
   end
 
-  def border
+  def card_border
     line = ' ' + '-' * 18
     line + self + line
   end
 
-  def red_adjust
+  def black_suit_adjust
     self.slice!(-3) unless self.include?('Hearts') || self.include?('Diamonds')
     self
   end
 
-  def edge
+  def card_edge
     "\n| " + self + "|\n"
   end
 
-  def pad
+  def pad_with_space
     space = 18 - self.length
     self + (' ' * space)
   end
