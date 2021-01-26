@@ -31,22 +31,6 @@ module BlackJack
       2.times { get_card; assign_card(person) }
     end
 
-    def score(person)
-      "score: #{person.calculate_score}"
-    end
-
-    def blackjack?(person)
-      person.score == 21
-    end
-
-    def bust?(person)
-      person.score > 21
-    end
-
-    def dealer_stand?
-      dealer.score >= 17
-    end
-
     def show_hand(person)
       puts hand_intro(person)
       puts person.hand.map { |card| card_name(card) }
@@ -77,7 +61,7 @@ module BlackJack
         if move == :hit
           deal_card_to(player)
           show_hand(player)
-          puts score(player)
+          puts player.show_score
           puts "Bust"; end_game if bust?(player)
           break if blackjack?(player)
         elsif move == :stand

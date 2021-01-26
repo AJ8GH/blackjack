@@ -1,6 +1,7 @@
 module BlackJack
   describe Dealer do
     subject (:dealer) { Dealer.new }
+    let (:player) { Player.new }
     let (:king) { Card.new(:king, :hearts) }
     let (:five) { Card.new(:five, :spades) }
     let (:ace) { Card.new(:ace, :hearts) }
@@ -132,6 +133,42 @@ module BlackJack
         dealer.deck.cards << ace
         dealer.replenish_deck
         expect(dealer.deck.cards.count).to eq 1
+      end
+    end
+
+    context '#blackjack' do
+      it 'returns true if player has blackjack' do
+        player.hand << ace << king
+        player.calculate_score
+        expect(player.blackjack?).to be true
+      end
+
+      it 'returns false if no blackjack' do
+        dealer.hand << ace << eight
+        dealer.calculate_score
+        expect(dealer.blackjack?).to be false
+      end
+    end
+
+    context '#bust?' do
+      it 'returns true when bust' do
+        player.hand << king << eight << five
+        player.calculate_score
+        expect(player.bust?).to be true
+      end
+
+      it 'returns false when not bust' do
+        player.hand << eight << king
+        player.calculate_score
+        expect(player.bust?).to be false
+      end
+    end
+
+    context '#dealer_stand?' do
+      it 'returns true when dealer score >= 17' do
+        dealer.hand << eight << king
+        dealer.calculate_score
+        expect(dealer.dealer_stand?).to be true
       end
     end
   end

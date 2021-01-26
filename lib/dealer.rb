@@ -8,6 +8,15 @@ module BlackJack
       @score = 0
     end
 
+    def deal
+      replenish_deck
+      deck.cards.delete_at(0)
+    end
+
+    def replenish_deck
+      self.deck = Deck.new if deck.cards.empty?
+    end
+
     def calculate_score
       self.score = hand.map(&:value).map(&VALUES).sum
       ace_adjust
@@ -27,13 +36,20 @@ module BlackJack
       hand.map(&:value).count(:ace)
     end
 
-    def deal
-      replenish_deck
-      deck.cards.delete_at(0)
+    def show_score
+      "score: #{calculate_score}"
     end
 
-    def replenish_deck
-      self.deck = Deck.new if deck.cards.empty?
+    def blackjack?
+      score == 21
+    end
+
+    def bust?
+      score > 21
+    end
+
+    def dealer_stand?
+      score >= 17
     end
   end
 end

@@ -113,41 +113,5 @@ module BlackJack
         expect(game.player.hand.count).to eq 1
       end
     end
-
-    context '#blackjack' do
-      it 'returns true if player has blackjack' do
-        game.player.hand << ace << ten
-        game.player.calculate_score
-        expect(game.blackjack?(game.player)).to be true
-      end
-
-      it 'returns false if no blackjack' do
-        game.dealer.hand << ace << eight
-        game.dealer.calculate_score
-        expect(game.blackjack?(game.dealer)).to be false
-      end
-    end
-
-    context '#bust?' do
-      it 'returns true when bust' do
-        game.player.hand << ten << eight << five
-        game.player.calculate_score
-        expect(game.bust?(game.player)).to be true
-      end
-
-      it 'returns false when not bust' do
-        game.player.hand << eight << ten
-        game.player.calculate_score
-        expect(game.bust?(game.player)).to be false
-      end
-    end
-
-    context '#dealer_stand?' do
-      it 'returns true when dealer score >= 17' do
-        game.dealer.hand << eight << ten
-        game.dealer.calculate_score
-        expect(game.dealer_stand?).to be true
-      end
-    end
   end
 end
