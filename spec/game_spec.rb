@@ -94,17 +94,19 @@ module BlackJack
 
     context '#player_game_logic' do
       it 'does nothing if player has blackjack' do
-        allow_any_instance_of(Game).to receive(:hit_or_stand) { :hit }
+        allow_any_instance_of(Game).to receive(:gets) { 'hit' }
         player = game.player
         player.hand << ace << ten
+        player.calculate_score
         game.player_game_logic
         expect(game.move).to eq nil
       end
 
       it 'calls hit_or_stand if score < 21' do
-        allow_any_instance_of(Game).to receive(:hit_or_stand) { :hit }
+        allow_any_instance_of(Game).to receive(:gets) { 'hit' }
         player = game.player
         player.hand << eight << ten
+        player.calculate_score
         game.player_game_logic
         expect(game.move).to eq :hit
       end

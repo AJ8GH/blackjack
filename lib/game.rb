@@ -51,7 +51,9 @@ module BlackJack
     end
 
     def player_game_logic
-      
+      unless player.score == 21
+        hit_or_stand
+      end
     end
   end
 end
