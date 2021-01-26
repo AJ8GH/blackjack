@@ -22,7 +22,10 @@ module BlackJack
       person.hand << card
     end
 
-
+    def deal_card_to(person)
+      get_card
+      assign_card(person)
+    end
 
     def initial_deal(person)
       2.times { get_card; assign_card(person) }

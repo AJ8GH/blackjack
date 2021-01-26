@@ -112,11 +112,11 @@ module BlackJack
       end
     end
 
-    # context '#deal_card_to' do
-    #   it 'gets card and puts it in player hand' do
-    #     game.deal_card_to(player)
-    #     expect(game.player.hand.count).to eq 1
-    #   end
-    # end
+    context '#deal_card_to' do
+      it 'gets card and puts it in player hand' do
+        game.deal_card_to(game.player)
+        expect(game.player.hand.count).to eq 1
+      end
+    end
   end
 end
