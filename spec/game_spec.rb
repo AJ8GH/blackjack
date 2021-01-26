@@ -5,7 +5,7 @@ module BlackJack
     let (:eight) { Card.new(:eight, :clubs) }
     let (:ten) { Card.new(:ten, :hearts) }
     let (:five) { Card.new(:five, :diamonds) }
-    let (:player_hand) { ["Your hand:\n ------------------\n| Eight ♧ Clubs",
+    let (:player_hand) { ["\nYour hand:\n ------------------\n| Eight ♧ Clubs",
                           "    |\n ------------------\n ------------------\n",
                           "| Ace ♤ Spades     |\n ------------------\n"].join }
     let (:dealer_hand) { ["Dealer:\n ------------------\n| Eight ♧ Clubs    |",
