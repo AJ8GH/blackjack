@@ -36,11 +36,11 @@ module BlackJack
     end
 
     def blackjack?(person)
-      person.calculate_score == 21
+      person.score == 21
     end
 
     def bust?(person)
-      person.calculate_score > 21
+      person.score > 21
     end
 
     def show_hand(person)
@@ -74,11 +74,10 @@ module BlackJack
           deal_card_to(player)
           show_hand(player)
           puts scoring
-          if player.score > 21
-            puts "Bust"
-            end_game
+          if bust?(player)
+            puts "Bust"; end_game
           end
-          break if player.score == 21
+          break if blackjack?(player)
         end
       end
     end
