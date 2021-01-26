@@ -11,8 +11,8 @@ Clone repo:
 Head to root folder:
 - `cd blackjack`
 
-Run example_game.rb:
-- `ruby ./lib/example_game.rb`
+Run play_blackjack.rb:
+- `ruby ./lib/play_blackjack.rb`
 
 Enjoy the game! Can you beat the dealer?
 

@@ -31,5 +31,20 @@ module BlackJack
     def hand_intro(person)
       person.class == Player ? "\nYour hand:" : "Dealer:"
     end
+
+    def card_name(card)
+      value, suit = [card.value, card.suit].map { |name| convert_card_names(name) }
+      "#{value} #{sym(card)} #{suit}".cardify
+    end
+
+    def sym(card)
+      card.suit == :spades ? '♤' :
+      card.suit == :hearts ? '♥︎' :
+      card.suit == :clubs ? '♧' : '♦︎'
+    end
+
+    def convert_card_names(name)
+      name.to_s.capitalize
+    end
   end
 end
