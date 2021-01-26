@@ -4,8 +4,8 @@ module BlackJack
     let (:ace) { Card.new(:ace, :spades) }
     let (:eight) { Card.new(:eight, :clubs) }
     let (:ten) { Card.new(:ten, :hearts) }
-    let (:player_hand) { "Your hand:\nEight of Clubs\nAce of Spades\n\n" }
-    let (:dealer_hand) { "Dealer:\nEight of Clubs\n*Hidden*\n\n"}
+    let (:player_hand) { "Your hand:\nEight of Clubs\nAce of Spades\n" }
+    let (:dealer_hand) { "Dealer:\nEight of Clubs\n*Hidden*\n"}
 
     context '#initalize' do
       it 'creates new game' do
@@ -93,17 +93,9 @@ module BlackJack
     end
 
     context '#player_game_logic' do
-      it 'does nothing if player has blackjack' do
-        allow_any_instance_of(Game).to receive(:gets) { 'hit' }
-        player = game.player
-        player.hand << ace << ten
-        player.calculate_score
-        game.player_game_logic
-        expect(game.move).to eq nil
-      end
-
       it 'calls hit_or_stand if score < 21' do
         allow_any_instance_of(Game).to receive(:gets) { 'hit' }
+        allow_any_instance_of(Object).to receive(:puts) { nil }
         player = game.player
         player.hand << eight << ten
         player.calculate_score
@@ -116,6 +108,13 @@ module BlackJack
       it 'gets card and puts it in player hand' do
         game.deal_card_to(game.player)
         expect(game.player.hand.count).to eq 1
+      end
+    end
+
+    context '#blackjack?' do
+      it 'returns true if player has blackjack' do
+        game.player.hand << ace << ten
+        expect(game.blackjack?(game.player)).to be true
       end
     end
   end

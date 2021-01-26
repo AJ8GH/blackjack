@@ -15,7 +15,7 @@ module BlackJack
     end
 
     def shuffle_deck
-      self.cards = cards.shuffle
+      3.times { self.cards = cards.shuffle }
     end
   end
 end

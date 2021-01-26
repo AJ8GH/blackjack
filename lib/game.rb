@@ -35,16 +35,19 @@ module BlackJack
       "score: #{player.calculate_score}"
     end
 
+    def blackjack?(person)
+      person.score == 21
+    end
+
     def show_hand(person)
       puts hand_intro(person)
       puts person.hand.map { |card| card_name(card) }
-      puts
     end
 
     def show_dealer_hand
       puts hand_intro(dealer)
       puts card_name(dealer.hand.first)
-      puts "*Hidden*\n\n"
+      puts "*Hidden*"
     end
 
     def hand_intro(person)
@@ -61,25 +64,30 @@ module BlackJack
     end
 
     def player_game_logic
-      unless player.score == 21
-        while true
-          hit_or_stand
-          if move == :hit
-            deal_card_to(player)
-            show_hand(player)
-            puts scoring
-            if player.score > 21
-              puts "Bust"
-              end_game
-            end
-            break if player.score == 21
+      while true
+        hit_or_stand
+        if move == :hit
+          deal_card_to(player)
+          show_hand(player)
+          puts scoring
+          if player.score > 21
+            puts "Bust"
+            end_game
           end
+          break if player.score == 21
         end
       end
     end
 
+    # def dealer_game_logic
+    #   while true
+    #
+    #     dealer
+    #   end
+    # end
+
     def play_again
-      puts "Play again? y/*"
+      puts "Play again? Hit 'y' for yes, any key for no:"
       gets.chomp
     end
 
@@ -100,7 +108,8 @@ module BlackJack
       start_game
       show_hand(player)
       show_dealer_hand
-      player_game_logic
+      player_game_logic unless player.calculate_score == 21
+      # unless dealer.calculate_score == 21
     end
   end
 end
