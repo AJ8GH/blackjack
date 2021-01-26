@@ -22,6 +22,8 @@ module BlackJack
       person.hand << card
     end
 
+
+
     def initial_deal(person)
       2.times { get_card; assign_card(person) }
     end
@@ -63,7 +65,11 @@ module BlackJack
             puts "score: #{score}"
             if score > 21
               puts "Bust"
-              run_game if play_again == 'y'
+              if play_again == 'y'
+                run_game
+              else
+                break
+              end
             end
             break if score == 21
           end
