@@ -21,6 +21,13 @@ module BlackJack
       end
     end
 
+    context '#reveal_dealer_hand' do
+      it 'outputs expected statement' do
+        allow_any_instance_of(Object).to receive(:gets) { "\n" }
+        expect { game.reveal_dealer_hand }.to output("⏎ to reveal dealer's hand\n").to_stdout
+      end
+    end
+
     context '#reset_hands' do
       it 'empties both hands' do
         game.player.hand << ace << ten << five
