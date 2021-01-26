@@ -43,7 +43,8 @@ module BlackJack
       person.score > 21
     end
 
-    def dealer_17
+    def dealer_stand?
+      dealer.score >= 17
     end
 
     def show_hand(person)
