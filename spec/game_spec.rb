@@ -3,7 +3,8 @@ module BlackJack
     subject (:game) { Game.new(Player.new) }
     let (:ace) { Card.new(:ace, :spades) }
     let (:eight) { Card.new(:eight, :clubs) }
-    let (:expected_output) { "Your hand:\nEight of Clubs\nAce of Spades\n\n" }
+    let (:player_hand) { "Your hand:\nEight of Clubs\nAce of Spades\n\n" }
+    let (:dealer_hand) { "Dealer:\nEight of Clubs\n*Hidden*\n\n"}
 
     context '#initalize' do
       it 'creates new game' do
@@ -79,7 +80,14 @@ module BlackJack
     context '#show_hand' do
       it 'shows persons hand' do
         game.player.hand << eight << ace
-        expect { game.show_hand(game.player) }.to output(expected_output).to_stdout
+        expect { game.show_hand(game.player) }.to output(player_hand).to_stdout
+      end
+    end
+
+    context '#show_dealer_hand' do
+      it 'shows the first card only' do
+        game.dealer.hand << eight << ace
+        expect { game.show_dealer_hand }.to output(dealer_hand).to_stdout
       end
     end
   end

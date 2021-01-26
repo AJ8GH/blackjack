@@ -31,8 +31,14 @@ module BlackJack
       puts
     end
 
+    def show_dealer_hand
+      puts hand_intro(dealer)
+      puts card_name(dealer.hand.first)
+      puts "*Hidden*\n\n"
+    end
+
     def hand_intro(person)
-      person.class == Player ? 'Your hand:' : "House:"
+      person.class == Player ? 'Your hand:' : "Dealer:"
     end
 
     def card_name(card)

@@ -3,6 +3,7 @@ require_relative 'blackjack'
 module BlackJack
   player = Player.new
   game = Game.new(player)
+  dealer = game.dealer
   players = [player, game.dealer]
 
   players.each { |person| game.initial_deal(person) }
