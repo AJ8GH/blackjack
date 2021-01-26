@@ -1,5 +1,10 @@
+require_relative 'game_operations'
+
 module BlackJack
   class Game
+    include GameOperations
+    include BlackJack
+
     attr_accessor :player, :dealer, :move, :card, :players
 
     def initialize(player)
@@ -45,18 +50,6 @@ module BlackJack
 
     def hand_intro(person)
       person.class == Player ? "\nYour hand:" : "Dealer:"
-    end
-
-    def card_name(card)
-      value, suit = [card.value, card.suit].map { |name| convert_card_names(name) }
-      suit += ' ' if suit == 'Hearts' || suit == 'Diamonds'
-      "#{value} #{sym(card)} #{suit}".cardify
-    end
-
-    def sym(card)
-      card.suit == :spades ? '♤' :
-      card.suit == :hearts ? '♥︎' :
-      card.suit == :clubs ? '♧' : '♦︎'
     end
 
     def convert_card_names(name)
@@ -143,55 +136,6 @@ module BlackJack
       deal_card_to(player)
       show_hand(player)
       puts player.show_score
-    end
-
-    def start_game
-      players.each { |person| initial_deal(person) }
-      players.each(&:calculate_score)
-    end
-
-    def play_again
-      puts "⏎ to play again, 'q' to quit"
-      gets.chomp
-    end
-
-    def reset_hands
-      players.each { |player| player.hand.clear }
-    end
-
-    def reset_scores
-      players.each { |player| player.score = 0 }
-    end
-
-    def end_game
-      if play_again == 'q'
-        exit
-      else
-        reset_hands; reset_scores; run_game
-      end
-    end
-
-    def win_statement
-      player.bust? ? "Bust, house wins!" :
-      dealer.bust? ? "Bust, player wins!" :
-      result == :win ? "Player wins!" :
-      result == :lose ? "House wins!" : "Push, no winner"
-    end
-
-    def result
-      player_score, dealer_score = players.map(&:score)
-      player_score > dealer_score ? :win :
-      player_score < dealer_score ? :lose : :push
-    end
-
-    def initiate_deal
-      puts "⏎ to deal"
-      gets
-    end
-
-    def reveal_dealer_hand
-      puts "⏎ to reveal dealer's hand"
-      gets
     end
   end
 end

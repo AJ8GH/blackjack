@@ -7,7 +7,7 @@ module BlackJack
         expect(deck.cards.count).to eq 52
       end
 
-      it 'shuffles the deck randomly on initalization' do
+      it 'shuffles the deck on initalization' do
         other_deck = Deck.new
         expect(deck.cards).not_to eq other_deck.cards
       end
