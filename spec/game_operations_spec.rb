@@ -78,5 +78,23 @@ module BlackJack
         expect(game.win_statement).to eq "House wins!"
       end
     end
+
+    context '#start_game' do
+      it 'deals 2 cards to each player' do
+        game.start_game
+        expect(game.player.hand.count).to eq 2
+        expect(game.dealer.hand.count).to eq 2
+      end
+    end
+
+    context '#calculate_scores' do
+      it 'calculates both scores' do
+        game.player.hand << ten << eight
+        game.dealer.hand << ten << five
+        game.calculate_scores
+        expect(game.player.score).to eq 18
+        expect(game.dealer.score).to eq 15
+      end
+    end
   end
 end

@@ -18,6 +18,10 @@ module BlackJack
 
     def start_game
       players.each { |person| initial_deal(person) }
+      calculate_scores
+    end
+
+    def calculate_scores
       players.each(&:calculate_score)
     end
 
