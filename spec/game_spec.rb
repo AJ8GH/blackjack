@@ -76,10 +76,10 @@ module BlackJack
       end
     end
 
-    context '#show_cards' do
+    context '#show_hand' do
       it 'shows persons hand' do
         game.player.hand << eight << ace
-        expect { game.show_cards(game.player) }.to output(expected_output).to_stdout
+        expect { game.show_hand(game.player) }.to output(expected_output).to_stdout
       end
     end
   end

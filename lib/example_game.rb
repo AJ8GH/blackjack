@@ -7,5 +7,6 @@ module BlackJack
 
   players.each { |person| game.initial_deal(person) }
 
-  game.show_cards
+  game.show_hand(player)
+  game.show_hand(dealer)
 end
