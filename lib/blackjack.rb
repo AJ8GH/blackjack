@@ -4,6 +4,7 @@ require_relative 'player'
 require_relative 'game'
 require_relative 'core_extensions'
 require_relative 'game_operations'
+require_relative 'card_operations'
 
 module BlackJack
   Card = Struct.new(:value, :suit)
@@ -28,7 +29,6 @@ module BlackJack
 
   def card_name(card)
     value, suit = [card.value, card.suit].map { |name| convert_card_names(name) }
-    suit += ' ' if suit == 'Hearts' || suit == 'Diamonds'
     "#{value} #{sym(card)} #{suit}".cardify
   end
 
@@ -36,5 +36,9 @@ module BlackJack
     card.suit == :spades ? '♤' :
     card.suit == :hearts ? '♥︎' :
     card.suit == :clubs ? '♧' : '♦︎'
+  end
+
+  def convert_card_names(name)
+    name.to_s.capitalize
   end
 end

@@ -1,9 +1,11 @@
 require_relative 'game_operations'
+require_relative 'card_operations'
 
 module BlackJack
   class Game
     include GameOperations
     include BlackJack
+    include CardOperations
 
     attr_accessor :player, :dealer, :move, :card, :players
 
@@ -18,42 +20,6 @@ module BlackJack
     def hit_or_stand
       puts "Hit or stand? (h/s)"
       self.move = gets.chomp.downcase.to_sym
-    end
-
-    def get_card
-      self.card = dealer.deal
-    end
-
-    def assign_card(person)
-      person.hand << card
-    end
-
-    def deal_card_to(person)
-      get_card
-      assign_card(person)
-    end
-
-    def initial_deal(person)
-      2.times { get_card; assign_card(person) }
-    end
-
-    def show_hand(person)
-      puts hand_intro(person)
-      puts person.hand.map { |card| card_name(card) }
-    end
-
-    def show_dealer_hand
-      puts hand_intro(dealer)
-      puts card_name(dealer.hand.first)
-      puts "* Hidden *".cardify
-    end
-
-    def hand_intro(person)
-      person.class == Player ? "\nYour hand:" : "Dealer:"
-    end
-
-    def convert_card_names(name)
-      name.to_s.capitalize
     end
 
     def run_game
