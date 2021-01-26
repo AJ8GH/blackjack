@@ -64,9 +64,11 @@ module BlackJack
     end
 
     def run_game
+      initiate_deal
       start_game
       show_dealer_hand
       show_hand(player)
+      player.show_score
       unless player.blackjack?
         player_game_logic
         show_hand(dealer)
@@ -143,6 +145,11 @@ module BlackJack
       player_score, dealer_score = players.map(&:score)
       player_score > dealer_score ? :win :
       player_score < dealer_score ? :lose : :push
+    end
+
+    def initiate_deal
+      puts 'Hit return to deal'
+      gets
     end
   end
 end

@@ -5,8 +5,13 @@ module BlackJack
     let (:eight) { Card.new(:eight, :clubs) }
     let (:ten) { Card.new(:ten, :hearts) }
     let (:five) { Card.new(:five, :diamonds) }
-    let (:player_hand) { "Your hand:\nEight of Clubs\nAce of Spades\n" }
-    let (:dealer_hand) { "Dealer:\nEight of Clubs\n*Hidden*\n"}
+    let (:player_hand) { ["Your hand:\n ------------------\n| Eight ♧ Clubs",
+                          "    |\n ------------------\n ------------------\n",
+                          "| Ace ♤ Spades     |\n ------------------\n"].join }
+    let (:dealer_hand) { ["Dealer:\n ------------------\n| Eight ♧ Clubs    |",
+                          "\n ------------------\n ------------------\n| * Hidden",
+                          " *       |\n ------------------\n"].join }
+    let (:ace_output) { " ------------------\n| Ace ♤ Spades     |\n ------------------" }
 
     context '#initalize' do
       it 'creates new game' do
@@ -77,7 +82,7 @@ module BlackJack
 
     context '#card_name' do
       it 'converts card symbols to string name' do
-        expect(game.card_name(ace)).to eq "Ace of Spades"
+        expect(game.card_name(ace)).to eq ace_output
       end
     end
 
