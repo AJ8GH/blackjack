@@ -67,7 +67,8 @@ module BlackJack
       unless dealer.dealer_stand?
         dealer_game_logic
       end
-      win
+      puts win_statement
+      end_game
     end
 
     def player_game_logic
@@ -125,6 +126,11 @@ module BlackJack
       else
         exit
       end
+    end
+
+    def win_statement
+      result == :win ? "Player wins!" :
+      result == :lose ? "House wins!" : "Push, no winner"
     end
 
     def result
