@@ -31,7 +31,7 @@ module BlackJack
     end
 
     def blackjack?
-      score == 21
+      score == 21 && hand.count == 2
     end
 
     def bust?

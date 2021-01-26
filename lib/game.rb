@@ -40,7 +40,7 @@ module BlackJack
     def show_dealer_hand
       puts hand_intro(dealer)
       puts card_name(dealer.hand.first)
-      puts "*Hidden*"
+      puts "* Hidden *".cardify
     end
 
     def hand_intro(person)
@@ -48,11 +48,18 @@ module BlackJack
     end
 
     def card_name(card)
-      value, suit = [card.value, card.suit].map { |name| convert_names(name) }
-      "#{value} of #{suit}"
+      value, suit = [card.value, card.suit].map { |name| convert_card_names(name) }
+      suit += ' ' if suit == 'Hearts' || suit == 'Diamonds'
+      "#{value} #{sym(card)} #{suit}".cardify
     end
 
-    def convert_names(name)
+    def sym(card)
+      card.suit == :spades ? '♤' :
+      card.suit == :hearts ? '♥︎' :
+      card.suit == :clubs ? '♧' : '♦︎'
+    end
+
+    def convert_card_names(name)
       name.to_s.capitalize
     end
 
@@ -62,10 +69,8 @@ module BlackJack
       show_hand(player)
       unless player.blackjack?
         player_game_logic
-      end
-      show_hand(dealer)
-      unless dealer.dealer_stand?
-        dealer_game_logic
+        show_hand(dealer)
+        dealer_game_logic unless dealer.dealer_stand?
       end
       puts win_statement
       end_game
@@ -108,7 +113,7 @@ module BlackJack
     end
 
     def play_again
-      puts "Play again? Enter 'y' for yes, return for no:"
+      puts "Play again? Enter y for yes, return for no:"
       gets.chomp
     end
 
@@ -129,6 +134,7 @@ module BlackJack
     end
 
     def win_statement
+      result == :win && player.blackjack? ? "BlackJack! Player wins!" :
       result == :win ? "Player wins!" :
       result == :lose ? "House wins!" : "Push, no winner"
     end
