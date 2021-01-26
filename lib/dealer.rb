@@ -16,7 +16,7 @@ module BlackJack
     def replenish_deck
       if deck.cards.empty?
         self.deck = Deck.new
-        puts 'New deck'
+        puts "\n" + "New deck".starify.double_line_break
       end
     end
 
