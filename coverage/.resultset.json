@@ -386,7 +386,7 @@
         null,
         null,
         1,
-        0,
+        1,
         null,
         null
       ],
@@ -515,7 +515,13 @@
         null
       ],
       "/Users/adamjonas/Projects/blackjack/spec/core_extensions_spec.rb": [
-
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
       ],
       "/Users/adamjonas/Projects/blackjack/spec/dealer_spec.rb": [
         1,
@@ -876,8 +882,6 @@
         null,
         null,
         null,
-        null,
-        null,
         null
       ],
       "/Users/adamjonas/Projects/blackjack/spec/player_spec.rb": [
@@ -921,6 +925,6 @@
         null
       ]
     },
-    "timestamp": 1611688425
+    "timestamp": 1611689349
   }
 }
