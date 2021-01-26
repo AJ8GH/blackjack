@@ -97,5 +97,12 @@ module BlackJack
         expect(game.dealer.score).to eq 15
       end
     end
+
+    context '#end_game' do
+      it 'ends the game when player inputs q' do
+        allow_any_instance_of(Object).to receive(:gets) { 'q' }
+        expect { game.end_game }.to raise_error(SystemExit)
+      end
+    end
   end
 end
