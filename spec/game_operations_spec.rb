@@ -49,5 +49,27 @@ module BlackJack
         expect(game.result).to eq :win
       end
     end
+
+    context '#win_statement' do
+      it 'returns push statement when push' do
+        game.player.hand << ace << ten << five
+        game.dealer.hand << ace << ten << five
+        game.players.each(&:calculate_score)
+        expect(game.win_statement).to eq "Push, no winner"
+      end
+
+      it 'returns bust statement when player busts' do
+        game.player.hand << eight << ten << five
+        game.player.calculate_score
+        expect(game.win_statement).to eq "Bust, house wins!"
+      end
+
+      it 'returns lose statement when player loses' do
+        game.player.hand << ten << five
+        game.dealer.hand << ace << ten << eight
+        game.players.each(&:calculate_score)
+        expect(game.win_statement).to eq "House wins!"
+      end
+    end
   end
 end
