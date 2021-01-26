@@ -42,13 +42,15 @@ module BlackJack
     end
 
     def card_name(card)
-      value = convert_names(card.value)
-      suit = convert_names(card.suit)
+      value, suit = [card.value, card.suit].map { |name| convert_names(name) }
       "#{value} of #{suit}"
     end
 
     def convert_names(name)
       name.to_s.capitalize
+    end
+
+    def player_game_logic
     end
   end
 end

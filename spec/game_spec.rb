@@ -3,6 +3,7 @@ module BlackJack
     subject (:game) { Game.new(Player.new) }
     let (:ace) { Card.new(:ace, :spades) }
     let (:eight) { Card.new(:eight, :clubs) }
+    let (:ten) { Card.new(:ten, :hearts) }
     let (:player_hand) { "Your hand:\nEight of Clubs\nAce of Spades\n\n" }
     let (:dealer_hand) { "Dealer:\nEight of Clubs\n*Hidden*\n\n"}
 
@@ -88,6 +89,13 @@ module BlackJack
       it 'shows the first card only' do
         game.dealer.hand << eight << ace
         expect { game.show_dealer_hand }.to output(dealer_hand).to_stdout
+      end
+    end
+
+    context '#player_game_logic' do
+      it 'does nothing if player has blackjack' do
+        game.player.hand << ace << ten
+        expect(game.player_game_logic).to eq nil
       end
     end
   end
