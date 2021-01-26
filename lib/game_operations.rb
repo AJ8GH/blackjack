@@ -35,6 +35,7 @@ module BlackJack
 
     def end_game
       if play_again == :q
+        puts 'Bye, thanks for playing!'.starify
         exit
       else
         reset_hands; reset_scores; run_game

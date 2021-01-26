@@ -123,12 +123,14 @@ module BlackJack
 
     context '#replenish_deck' do
       it 'creates new deck if deck is empty' do
+        allow(STDOUT).to receive(:puts) { nil }
         dealer.deck.cards.clear
         dealer.replenish_deck
         expect(dealer.deck.cards.count).to eq 52
       end
 
       it 'does nothing if deck is not empty' do
+        allow(STDOUT).to receive(:puts) { nil }
         dealer.deck.cards.clear
         dealer.deck.cards << ace
         dealer.replenish_deck

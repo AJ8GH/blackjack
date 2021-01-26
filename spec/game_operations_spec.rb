@@ -5,6 +5,7 @@ module BlackJack
     let (:eight) { Card.new(:eight, :clubs) }
     let (:ten) { Card.new(:ten, :hearts) }
     let (:five) { Card.new(:five, :diamonds) }
+    let (:end_output) { 'Bye, thanks for playing!'.starify }
 
     context '#initiate_deal' do
       it 'outputs expected statement' do

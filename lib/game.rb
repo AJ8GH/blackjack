@@ -4,7 +4,6 @@ require_relative 'card_operations'
 module BlackJack
   class Game
     include GameOperations
-    include BlackJack
     include CardOperations
 
     attr_accessor :player, :dealer, :move, :card, :players
