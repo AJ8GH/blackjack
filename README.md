@@ -1,4 +1,5 @@
-<h1 style="text-align: center;">♦︎ ♧ ♥︎ ♤ BLACKJACK ♤ ♥︎ ♧ ♦︎</h1>
+# ♦︎ ♧ ♥︎ ♤ BLACKJACK ♤ ♥︎ ♧ ♦︎
+[![Build Status](https://travis-ci.com/AJ8GH/blackjack.svg?branch=master)](https://travis-ci.com/AJ8GH/blackjack)
 
 ![blackjack](https://www.pinnacle.com/Cms_Data/Contents/Guest/Media/betting-articles/casino/Blackjack/article-how-to-play-blackjack-hero.jpg)
 
