@@ -75,8 +75,24 @@ module BlackJack
     end
 
     context '#card_name' do
-      it 'converts card symbols to string name' do
+      it 'converts card symbols to full string name' do
         expect(game.card_name(ace)).to eq ace_output
+      end
+    end
+
+    context '#suit_symbol' do
+      it 'returns correct suit symbols' do
+        expect(game.suit_symbol(ace)).to eq '♤'
+        expect(game.suit_symbol(eight)).to eq '♧'
+        expect(game.suit_symbol(ten)).to eq '♥︎'
+        expect(game.suit_symbol(five)).to eq '♦︎'
+      end
+    end
+
+    context '#convert_card_names' do
+      it 'converts symbol to capitalized string' do
+        expect(game.convert_card_names(:spades)).to eq 'Spades'
+        expect(game.convert_card_names(:six)).to eq 'Six'
       end
     end
   end

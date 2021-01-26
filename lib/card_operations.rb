@@ -34,10 +34,10 @@ module BlackJack
 
     def card_name(card)
       value, suit = [card.value, card.suit].map { |name| convert_card_names(name) }
-      "#{value} #{sym(card)} #{suit}".cardify
+      "#{value} #{suit_symbol(card)} #{suit}".cardify
     end
 
-    def sym(card)
+    def suit_symbol(card)
       card.suit == :spades ? '♤' :
       card.suit == :hearts ? '♥︎' :
       card.suit == :clubs ? '♧' : '♦︎'
