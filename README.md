@@ -20,6 +20,10 @@ Betting capabilities coming soon...
 
 ![vegas](https://media.giphy.com/media/ShZ1AHZ1AKyt2/giphy.gif)
 
+## WHO IS THIS USEFUL FOR
+
+- Anyone who would like to enjoy a good game of blackjack, in the comfort of their own terminal
+- Professional gamblers, or anyone learning to count cards
 
 ## TESTING
 

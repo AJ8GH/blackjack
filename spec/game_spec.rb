@@ -36,7 +36,5 @@ module BlackJack
         expect(game.move).to eq :hit
       end
     end
-
-
   end
 end
