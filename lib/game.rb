@@ -64,27 +64,47 @@ module BlackJack
     end
 
     def run_game
+      initial_sequence
+      blackjack_logic
+      win_logic
+      end_game
+    end
+
+    def initial_sequence
       initiate_deal
       start_game
       show_dealer_hand
       show_hand(player)
       player.show_score
-      if player.blackjack?
-        puts puts "BlackJack!"
-        reveal_dealer_hand
-        show_hand(dealer)
-      else
-        player_game_logic
-        reveal_dealer_hand
-        show_hand(dealer)
-        dealer_game_logic unless dealer.dealer_stand?
-      end
+    end
+
+    def player_sequence
+      player_game_logic
+      reveal_dealer_hand
+      show_hand(dealer)
+      dealer_game_logic unless dealer.dealer_stand?
+    end
+
+    def blackjack_sequence
+      puts puts "BlackJack!"
+      reveal_dealer_hand
+      show_hand(dealer)
+    end
+
+    def win_logic
       if result == :win
         puts win_statement.dollarfy.double_line_break
       else
         puts win_statement.starify.double_line_break
       end
-      end_game
+    end
+
+    def blackjack_logic
+      if player.blackjack?
+        blackjack_sequence
+      else
+        player_sequence
+      end
     end
 
     def player_game_logic
