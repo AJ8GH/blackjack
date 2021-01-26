@@ -9,7 +9,7 @@ module BlackJack
       @card = nil
     end
 
-    def hit_or_stick
+    def hit_or_stand
       self.move = gets.chomp.downcase.to_sym
     end
 
@@ -51,6 +51,7 @@ module BlackJack
     end
 
     def player_game_logic
+      
     end
   end
 end

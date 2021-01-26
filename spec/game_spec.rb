@@ -25,17 +25,17 @@ module BlackJack
       end
     end
 
-    context '#hit_or_stick' do
+    context '#hit_or_stand' do
       it 'gets a move from player' do
         allow_any_instance_of(Object).to receive(:gets) { 'hit' }
-        expect(game.hit_or_stick).to eq :hit
+        expect(game.hit_or_stand).to eq :hit
       end
     end
 
     context '#move' do
       it 'stores/returns the move' do
         allow_any_instance_of(Object).to receive(:gets) { 'hit' }
-        game.hit_or_stick
+        game.hit_or_stand
         expect(game.move).to eq :hit
       end
     end
@@ -94,8 +94,19 @@ module BlackJack
 
     context '#player_game_logic' do
       it 'does nothing if player has blackjack' do
-        game.player.hand << ace << ten
-        expect(game.player_game_logic).to eq nil
+        allow_any_instance_of(Game).to receive(:hit_or_stand) { :hit }
+        player = game.player
+        player.hand << ace << ten
+        game.player_game_logic
+        expect(game.move).to eq nil
+      end
+
+      it 'calls hit_or_stand if score < 21' do
+        allow_any_instance_of(Game).to receive(:hit_or_stand) { :hit }
+        player = game.player
+        player.hand << eight << ten
+        game.player_game_logic
+        expect(game.move).to eq :hit
       end
     end
   end
