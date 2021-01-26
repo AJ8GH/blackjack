@@ -27,11 +27,15 @@ module BlackJack
     end
 
     def show_score
-      "score: #{calculate_score}"
+      "score: #{calculate_score}".double_line_break
     end
 
     def blackjack?
       score == 21 && hand.count == 2
+    end
+
+    def twenty_one?
+      score == 21
     end
 
     def bust?

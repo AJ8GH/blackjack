@@ -44,7 +44,7 @@ module BlackJack
     end
 
     def hand_intro(person)
-      person.class == Player ? 'Your hand:' : "Dealer:"
+      person.class == Player ? "\nYour hand:" : "Dealer:"
     end
 
     def card_name(card)
@@ -69,12 +69,21 @@ module BlackJack
       show_dealer_hand
       show_hand(player)
       player.show_score
-      unless player.blackjack?
+      if player.blackjack?
+        blackjack_statement
+        reveal_dealer_hand
+        show_hand(dealer)
+      else
         player_game_logic
+        reveal_dealer_hand
         show_hand(dealer)
         dealer_game_logic unless dealer.dealer_stand?
       end
-      puts win_statement
+      if result == :win
+        puts win_statement.dollarfy.double_line_break
+      else
+        puts win_statement.starify.double_line_break
+      end
       end_game
     end
 
@@ -86,8 +95,9 @@ module BlackJack
           show_hand(player)
           puts player.show_score
           if player.bust?
-            puts "Bust, house wins!"; end_game
-          elsif player.blackjack?
+            puts win_statement.starify.double_line_break
+            end_game
+          elsif player.twenty_one?
             break
           end
         elsif move == :stand
@@ -98,11 +108,13 @@ module BlackJack
 
     def dealer_game_logic
       while true
+        initiate_deal
         deal_card_to(dealer)
         show_hand(dealer)
         puts dealer.show_score
         if dealer.bust?
-          puts "Bust, player wins!"; end_game
+          puts win_statement.dollarfy.double_line_break
+          end_game
         elsif dealer.dealer_stand?
           break
         end
@@ -115,7 +127,7 @@ module BlackJack
     end
 
     def play_again
-      puts "Play again? Enter y for yes, return for no:"
+      puts "⏎ to play again, 'q' to quit"
       gets.chomp
     end
 
@@ -128,15 +140,16 @@ module BlackJack
     end
 
     def end_game
-      if play_again == 'y'
-        reset_hands; reset_scores; run_game
-      else
+      if play_again == 'q'
         exit
+      else
+        reset_hands; reset_scores; run_game
       end
     end
 
     def win_statement
-      result == :win && player.blackjack? ? "BlackJack! Player wins!" :
+      player.bust? ? "Bust, house wins!" :
+      dealer.bust? ? "Bust, player wins!" :
       result == :win ? "Player wins!" :
       result == :lose ? "House wins!" : "Push, no winner"
     end
@@ -148,7 +161,17 @@ module BlackJack
     end
 
     def initiate_deal
-      puts 'Hit return to deal'
+      puts "⏎ to deal"
+      gets
+    end
+
+    def blackjack_statement
+      puts "BlackJack! ⏎ to reveal dealer's hand".double_line_break
+      gets
+    end
+
+    def reveal_dealer_hand
+      puts "⏎ to reveal dealer's hand"
       gets
     end
   end

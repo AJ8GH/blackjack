@@ -22,4 +22,16 @@ class String
     space = 18 - self.length
     self + (' ' * space)
   end
+
+  def double_line_break
+    self + "\n\n"
+  end
+
+  def starify
+    '*** ' + self + ' ***'
+  end
+
+  def dollarfy
+    '$$$ ' + self + ' $$$'
+  end
 end
