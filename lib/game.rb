@@ -111,9 +111,7 @@ module BlackJack
       while true
         hit_or_stand
         if move == :h
-          deal_card_to(player)
-          show_hand(player)
-          puts player.show_score
+          player_hit_sequence
           if player.bust?
             puts win_statement.starify.double_line_break
             end_game
@@ -139,6 +137,12 @@ module BlackJack
           break
         end
       end
+    end
+
+    def player_hit_sequence
+      deal_card_to(player)
+      show_hand(player)
+      puts player.show_score
     end
 
     def start_game
