@@ -32,29 +32,7 @@ module BlackJack
       initiate_deal
       start_game
       show_dealer_hand
-      show_hand(player)
-      player.show_score
-    end
-
-    def player_sequence
-      player_game_logic
-      reveal_dealer_hand
-      show_hand(dealer)
-      dealer_game_logic unless dealer.dealer_stand?
-    end
-
-    def blackjack_sequence
-      puts puts "BlackJack!"
-      reveal_dealer_hand
-      show_hand(dealer)
-    end
-
-    def win_logic
-      if result == :win
-        puts win_statement.dollarfy.double_line_break
-      else
-        puts win_statement.starify.double_line_break
-      end
+      show_hand_and_score(player)
     end
 
     def blackjack_logic
@@ -63,6 +41,38 @@ module BlackJack
       else
         player_sequence
       end
+    end
+
+    def blackjack_sequence
+      puts "BlackJack!"
+      reveal_dealer_hand_and_score
+    end
+
+    def player_sequence
+      player_game_logic
+      reveal_dealer_hand_and_score
+      dealer_game_logic unless dealer.dealer_stand?
+    end
+
+    def player_hit_sequence
+      deal_card_to(player)
+      show_hand_and_score(player)
+    end
+
+    def dealer_hit_sequence
+      initiate_deal
+      deal_card_to(dealer)
+      show_hand_and_score(dealer)
+    end
+
+    def show_hand_and_score(person)
+      show_hand(person)
+      puts person.show_score
+    end
+
+    def reveal_dealer_hand_and_score
+      reveal_dealer_hand
+      show_hand_and_score(dealer)
     end
 
     def player_game_logic
@@ -77,17 +87,14 @@ module BlackJack
             break
           end
         elsif move == :s
-          puts player.show_score; break
+          break
         end
       end
     end
 
     def dealer_game_logic
       while true
-        initiate_deal
-        deal_card_to(dealer)
-        show_hand(dealer)
-        puts dealer.show_score
+        dealer_hit_sequence
         if dealer.bust?
           puts win_statement.dollarfy.double_line_break
           end_game
@@ -97,10 +104,12 @@ module BlackJack
       end
     end
 
-    def player_hit_sequence
-      deal_card_to(player)
-      show_hand(player)
-      puts player.show_score
+    def win_logic
+      if result == :win
+        puts win_statement.dollarfy.double_line_break
+      else
+        puts win_statement.starify.double_line_break
+      end
     end
   end
 end

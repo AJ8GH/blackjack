@@ -11,8 +11,12 @@ Clone:
 Head to root folder:
 - `cd blackjack`
 
-Run play_blackjack.rb:
-- `ruby ./lib/play_blackjack.rb`
+Run play_blackjack.rb from the terminal:
+- `ruby lib/play_blackjack.rb`
+
+Or in irb:
+- `irb`
+- `require_relative 'lib/play_blackjack.rb'`
 
 Enjoy the game! Can you beat the dealer?
 
@@ -80,13 +84,11 @@ Tests are written using rspec. Run from root folder with:
 
 `rspec` or `rspec -fd`
 
-## Technical info
+## Dependencies
+- `coveralls` (test coverage)
+- `rake` (CI testing)
+- `rspec` (unit testing)
 
-Blackjack was built using the following tools and methodologies:
-- Ruby
-- RSpec
-- OOP
-- TDD
 
 ## More details on the [rules & history of blackjack](https://bicyclecards.com/how-to-play/blackjack/)
 ![historic blackjack](https://www.wopc.co.uk/images/countries/uk/cardhands.jpg)

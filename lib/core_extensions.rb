@@ -34,4 +34,9 @@ class String
   def dollarfy
     '$$$ ' + self + ' $$$'
   end
+
+  def card_suits
+    "\n♦︎ ♧ ♥︎ ♤ " + self + ' ♤ ♥︎ ♧ ♦︎'
+  end
+
 end

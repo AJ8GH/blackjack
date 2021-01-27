@@ -25,7 +25,7 @@ module BlackJack
     context '#reveal_dealer_hand' do
       it 'outputs expected statement' do
         allow_any_instance_of(Object).to receive(:gets) { "\n" }
-        expect { game.reveal_dealer_hand }.to output("Press ⏎ to reveal dealer's hand\n").to_stdout
+        expect { game.reveal_dealer_hand }.to output("\nPress ⏎ to reveal dealer's hand\n").to_stdout
       end
     end
 
@@ -101,6 +101,7 @@ module BlackJack
     context '#end_game' do
       it 'ends the game when player inputs q' do
         allow_any_instance_of(Object).to receive(:gets) { 'q' }
+        allow(STDOUT).to receive(:puts) { nil }
         expect { game.end_game }.to raise_error(SystemExit)
       end
     end

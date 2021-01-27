@@ -1,13 +1,17 @@
 module BlackJack
   module GameOperations
 
+    def game_welcome
+      "WELCOME TO BLACKJACK".card_suits.double_line_break
+    end
+
     def initiate_deal
       puts "Press ⏎ to deal"
       gets
     end
 
     def reveal_dealer_hand
-      puts "Press ⏎ to reveal dealer's hand"
+      puts "\nPress ⏎ to reveal dealer's hand"
       gets
     end
 
@@ -35,7 +39,7 @@ module BlackJack
 
     def end_game
       if play_again == :q
-        puts 'Bye, thanks for playing!'.starify
+        puts 'Bye, thanks for playing!'
         exit
       else
         reset_hands; reset_scores; run_game
