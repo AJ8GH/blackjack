@@ -2,17 +2,17 @@ module BlackJack
   module GameOperations
 
     def initiate_deal
-      puts "⏎ to deal"
+      puts "Press ⏎ to deal"
       gets
     end
 
     def reveal_dealer_hand
-      puts "⏎ to reveal dealer's hand"
+      puts "Press ⏎ to reveal dealer's hand"
       gets
     end
 
     def play_again
-      puts "⏎ to play again, 'q' to quit"
+      puts "Press ⏎ to play again, 'q' to quit"
       gets.chomp.downcase.to_sym
     end
 
