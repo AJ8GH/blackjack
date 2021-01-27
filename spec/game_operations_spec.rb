@@ -10,7 +10,7 @@ module BlackJack
     context '#initiate_deal' do
       it 'outputs expected statement' do
         allow_any_instance_of(Object).to receive(:gets) { "\n" }
-        expect { game.initiate_deal }.to output("⏎ to deal\n").to_stdout
+        expect { game.initiate_deal }.to output("Press ⏎ to deal\n").to_stdout
       end
     end
 
@@ -25,7 +25,7 @@ module BlackJack
     context '#reveal_dealer_hand' do
       it 'outputs expected statement' do
         allow_any_instance_of(Object).to receive(:gets) { "\n" }
-        expect { game.reveal_dealer_hand }.to output("⏎ to reveal dealer's hand\n").to_stdout
+        expect { game.reveal_dealer_hand }.to output("Press ⏎ to reveal dealer's hand\n").to_stdout
       end
     end
 
