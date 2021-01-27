@@ -17,7 +17,7 @@
 ##### Or in irb:
 - `irb -r ./lib/play_blackjack.rb`
 
-###### *Enjoy the game! Can you beat the dealer?*
+##### *Enjoy the game! Can you beat the dealer?*
 
 ![vegas](https://media.giphy.com/media/ShZ1AHZ1AKyt2/giphy.gif)
 
