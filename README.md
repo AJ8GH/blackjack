@@ -5,20 +5,19 @@
 
 ## Getting Started
 
-Clone:
+##### Clone:
 - `git clone git@github.com:AJ8GH/blackjack.git`
 
-Head to root folder:
+##### Head to root folder:
 - `cd blackjack`
 
-Run play_blackjack.rb from the terminal:
+##### Run with ruby:
 - `ruby lib/play_blackjack.rb`
 
-Or in irb:
-- `irb`
-- `require_relative 'lib/play_blackjack.rb'`
+##### Or in irb:
+- `irb -r ./lib/play_blackjack.rb`
 
-Enjoy the game! Can you beat the dealer?
+###### *Enjoy the game! Can you beat the dealer?*
 
 ![vegas](https://media.giphy.com/media/ShZ1AHZ1AKyt2/giphy.gif)
 
@@ -88,5 +87,5 @@ Tests are written using rspec. Run from root folder with:
 - `rspec` (unit testing)
 
 
-## More details on the [rules & history of blackjack](https://bicyclecards.com/how-to-play/blackjack/)
+### More details on the [rules](https://bicyclecards.com/how-to-play/blackjack/) & [history](https://crescent.edu/post/the-history-of-blackjack#:~:text=The%20origins%20of%20Blackjack%20is,were%20popular%20at%20that%20time.) of blackjack
 ![historic blackjack](https://www.wopc.co.uk/images/countries/uk/cardhands.jpg)
