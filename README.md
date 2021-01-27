@@ -23,35 +23,49 @@ Enjoy the game! Can you beat the dealer?
 The Blackjack app is designed to model the behaviour of a real life game
 
 ##### Deck:
-- This is the same as a real deck - Made of 52 individual Card Structs, each with a value and a suit attribute
+- Just like a real deck of cards - Made up of 52 individual Card Structs, each with a value and a suit attribute
 - Self builds and shuffles on initialization
-- The game currently runs with one 52 card deck, although it would be easy to adjust to
-a 4 or 6 deck game
+- The game currently runs with one 52 card deck, and it would be very easy to adjust to a 4 or 6 deck game
 
 ##### Dealer:
 - A dealer is initialized when a new game is started and in turn the dealer initializes a new deck.
-- Has the ability to deal cards one at a time
-- Once a card is dealt it is a assigned to the correct player's hand and is removed from the Deck, so the cards in the deck decrease, just like in a real game
+- Deals cards one at a time which the game assigns to correct player's hand
+- Once a card is dealt it is removed from the Deck, so the cards left in the deck accurately reflect the cards which have not yet been seen.
 
 ##### Player and Dealer each have:
 - A hand attribute which holds their cards and resets after each hand
 - The ability to calculate their score
 - A score attribute which stores the score after calculation
 
-##### Scoring:
-- Scoring is identical to the real life game
-- each card is mapped to its corresponding points value in a hash
-- Scoring is calculated after the initial deal and after each 'hit'
-- If the player has a Blackjack, the dealer reveals their hand. If they have less than 21, the player wins
+##### Play
+
+###### Player:
+- The initial deal puts 2 cards in each hand
+- The players cards are both visible, the dealer shows their first card and hides their second
+- Unless the player has a blackjack, they can decide to hit or stand
+- If they bust, the hand is over. If they stand, play turns to the dealer
+- If they have a blackjack on initial deal, or reach 21 through hitting, play automatically transfers to the dealer
+
+###### Dealer:
+- Once the player stands or has 21, play transfers to the dealer who reveals their hand.
+- They will always hit if their score is less than 17 and will always stand with a score of 17 or more, as per official casino blackjack rules
+
+###### Win, lose, push:
+- If the player has a Blackjack and the dealer does not, the player wins
 - If the player busts, the house wins
-- If the player stands, the dealer will always hit if their score is less than 17, as per the rules of casino blackjack. They will always stand once they have a score of 17 or more
-- If both player and dealer stand the highest scoring hand wins, with a push (no winner) if the scores are tied
-- Ace is worth 11 by default. If a player would be bust with an ace or aces in their hand, the scoring system will automatically adjust aces to 1. After each hit it will adjust the minimum number of aces needed for the player not to be bust. If the player is still bust after all aces are adjusted, they are declared bust and lose the hand.
+- If the player stands and the dealer busts, the player wins
+- If both player and dealer stand, the highest scoring hand wins, with a push declared if the hands are tied
+
+##### Scoring:
+- Scoring is identical to standard blackjack rules
+- each card is mapped to its corresponding points value in a hash, with 2 through 10 worth their numeric value, face cards worth ten, and aces worth 11 or 1 depending on the hand.
+- Scoring is calculated after the initial deal and after each 'hit'
+- Aces are worth 11 by default. If a player would be bust with any aces in their hand, the scoring system automatically adjusts them to 1. Each time scores are calculated it will adjust the minimum number of aces needed, for the player not to be bust. If the player is still bust after all aces are adjusted, they are declared bust and lose the hand.
 
 ## HOW TO USE THIS APP
 
 - For fun - enjoy a real game of blackjack through your terminal
-- For profit - practice counting cards and head to Vegas
+- For profit - practice counting cards and head to Vegas (no liability accepted for any losses incurred)
 
 ## TESTING
 
