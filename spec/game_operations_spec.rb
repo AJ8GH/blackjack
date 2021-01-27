@@ -6,6 +6,7 @@ module BlackJack
     let (:ten) { Card.new(:ten, :hearts) }
     let (:five) { Card.new(:five, :diamonds) }
     let (:end_output) { 'Bye, thanks for playing!'.starify }
+    let (:welcome) { "\n♦︎ ♧ ♥︎ ♤ WELCOME TO BLACKJACK ♤ ♥︎ ♧ ♦︎\n\n" }
 
     context '#initiate_deal' do
       it 'outputs expected statement' do
@@ -103,6 +104,12 @@ module BlackJack
         allow_any_instance_of(Object).to receive(:gets) { 'q' }
         allow(STDOUT).to receive(:puts) { nil }
         expect { game.end_game }.to raise_error(SystemExit)
+      end
+    end
+
+    context '#game_welcome' do
+      it 'returns welcome message' do
+        expect(game.game_welcome).to eq welcome
       end
     end
   end
