@@ -5,7 +5,7 @@
 ![blackjack](https://www.pinnacle.com/Cms_Data/Contents/Guest/Media/betting-articles/casino/Blackjack/article-how-to-play-blackjack-hero.jpg)
 ## GETTING STARTED
 
-Clone repo:
+Clone:
 - `git clone git@github.com:AJ8GH/blackjack.git`
 
 Head to root folder:
@@ -16,14 +16,42 @@ Run play_blackjack.rb:
 
 Enjoy the game! Can you beat the dealer?
 
-Betting capabilities coming soon...
-
 ![vegas](https://media.giphy.com/media/ShZ1AHZ1AKyt2/giphy.gif)
 
-## WHO IS THIS USEFUL FOR
+## DESIGN
 
-- Anyone who would like to enjoy a good game of blackjack, in the comfort of their own terminal
-- Professional gamblers, or anyone learning to count cards
+The Blackjack app is designed to model the behaviour of a real life game
+
+##### Deck:
+- This is the same as a real deck - Made of 52 individual Card Structs, each with a value and a suit attribute
+- Self builds and shuffles on initialization
+- The game currently runs with one 52 card deck, although it would be easy to adjust to
+a 4 or 6 deck game
+
+##### Dealer:
+- A dealer is initialized when a new game is started and in turn the dealer initializes a new deck.
+- Has the ability to deal cards one at a time
+- Once a card is dealt it is a assigned to the correct player's hand and is removed from the Deck, so the cards in the deck decrease, just like in a real game
+
+##### Player and Dealer each have:
+- A hand attribute which holds their cards and resets after each hand
+- The ability to calculate their score
+- A score attribute which stores the score after calculation
+
+##### Scoring:
+- Scoring is identical to the real life game
+- each card is mapped to its corresponding points value in a hash
+- Scoring is calculated after the initial deal and after each 'hit'
+- If the player has a Blackjack, the dealer reveals their hand. If they have less than 21, the player wins
+- If the player busts, the house wins
+- If the player stands, the dealer will always hit if their score is less than 17, as per the rules of casino blackjack. They will always stand once they have a score of 17 or more
+- If both player and dealer stand the highest scoring hand wins, with a push (no winner) if the scores are tied
+- Ace is worth 11 by default. If a player would be bust with an ace or aces in their hand, the scoring system will automatically adjust aces to 1. After each hit it will adjust the minimum number of aces needed for the player not to be bust. If the player is still bust after all aces are adjusted, they are declared bust and lose the hand.
+
+## HOW TO USE THIS APP
+
+- For fun - enjoy a real game of blackjack through your terminal
+- For profit - practice counting cards and head to Vegas
 
 ## TESTING
 
@@ -39,7 +67,7 @@ BlackJack was built using the following tools and methodologies:
 - OOP
 - TDD
 
-## THE RULES
+## RULES & HISTORY
 
 ![southpark](https://media.giphy.com/media/26ufcZICbgCSGe5sQ/giphy.gif)
 
