@@ -84,7 +84,7 @@ module BlackJack
             puts win_statement.starify.double_line_break
             end_game
           elsif player.twenty_one?
-            break
+            puts 'Twenty one!'; break
           end
         elsif move == :s
           break

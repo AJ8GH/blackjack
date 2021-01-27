@@ -109,7 +109,7 @@ module BlackJack
 
     context '#game_welcome' do
       it 'returns welcome message' do
-        expect(game.game_welcome).to eq welcome
+        expect { game.game_welcome }.to output(welcome).to_stdout
       end
     end
   end

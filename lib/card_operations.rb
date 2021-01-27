@@ -38,9 +38,10 @@ module BlackJack
     end
 
     def suit_symbol(card)
-      card.suit == :spades ? '♤' :
-      card.suit == :hearts ? '♥︎' :
-      card.suit == :clubs ? '♧' : '♦︎'
+      card_suit = card.suit
+      card_suit == :spades ? '♤' :
+      card_suit == :hearts ? '♥︎' :
+      card_suit == :clubs ? '♧' : '♦︎'
     end
 
     def convert_card_names(name)

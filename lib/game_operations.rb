@@ -2,7 +2,7 @@ module BlackJack
   module GameOperations
 
     def game_welcome
-      "WELCOME TO BLACKJACK".card_suits.double_line_break
+      puts "WELCOME TO BLACKJACK".card_suits.double_line_break
     end
 
     def initiate_deal
@@ -39,7 +39,7 @@ module BlackJack
 
     def end_game
       if play_again == :q
-        puts 'Bye, thanks for playing!'
+        puts "\nBye, thanks for playing!".double_line_break
         exit
       else
         reset_hands; reset_scores; run_game

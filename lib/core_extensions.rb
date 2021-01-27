@@ -38,5 +38,4 @@ class String
   def card_suits
     "\n♦︎ ♧ ♥︎ ♤ " + self + ' ♤ ♥︎ ♧ ♦︎'
   end
-
 end
