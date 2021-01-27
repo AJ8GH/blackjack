@@ -36,5 +36,16 @@ module BlackJack
         expect(game.move).to eq :hit
       end
     end
+
+    context '#win_logic' do
+      it 'returns win statement with $ if win' do
+        allow_any_instance_of(Game).to receive(:result) { :win }
+        expect { game.win_logic }.to output("Player wins!".dollarfy.double_line_break).to_stdout
+      end
+      it 'returns lose statement with * if lose' do
+        allow_any_instance_of(Game).to receive(:result) { :lose }
+        expect { game.win_logic }.to output("House wins!".starify.double_line_break).to_stdout
+      end
+    end
   end
 end
