@@ -1,9 +1,9 @@
 # ♦︎ ♧ ♥︎ ♤ BLACKJACK ♤ ♥︎ ♧ ♦︎
 [![Build Status](https://travis-ci.com/AJ8GH/blackjack.svg?branch=master)](https://travis-ci.com/AJ8GH/blackjack) [![Coverage Status](https://coveralls.io/repos/github/AJ8GH/blackjack/badge.svg?branch=master)](https://coveralls.io/github/AJ8GH/blackjack?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/b5ee28ef64bf8bbcf291/maintainability)](https://codeclimate.com/github/AJ8GH/blackjack/maintainability)
 
-## Getting Started
+![blackjack table](https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fdam%2Fimageserve%2F1051931270%2F960x0.jpg%3Ffit%3Dscale)
 
-![vegas](https://media.giphy.com/media/ShZ1AHZ1AKyt2/giphy.gif)
+## Getting Started
 
 Clone:
 - `git clone git@github.com:AJ8GH/blackjack.git`
@@ -16,9 +16,9 @@ Run play_blackjack.rb:
 
 Enjoy the game! Can you beat the dealer?
 
-## Design
+![vegas](https://media.giphy.com/media/ShZ1AHZ1AKyt2/giphy.gif)
 
-![blackjack](https://www.pinnacle.com/Cms_Data/Contents/Guest/Media/betting-articles/casino/Blackjack/article-how-to-play-blackjack-hero.jpg)
+## Design
 
 The Blackjack app is designed to model the behaviour of a real life game
 
@@ -38,6 +38,11 @@ The Blackjack app is designed to model the behaviour of a real life game
 - The ability to calculate their score
 - A score attribute which stores the score after calculation
 
+##### Scoring:
+- Scoring is identical to standard blackjack rules
+- each card is mapped to its corresponding points value in a hash, with 2 through 10 worth their numeric value, face cards worth ten, and aces worth 11 or 1 depending on the hand.
+- Scoring is calculated after the initial deal and after each 'hit'
+- Aces are worth 11 by default. If a player would be bust with any aces in their hand, the scoring system automatically adjusts them to 1. Each time scores are calculated it will adjust the minimum number of aces needed, for the player not to be bust. If the player is still bust after all aces are adjusted, they are declared bust and lose the hand.
 
 ## Play
 
@@ -57,20 +62,17 @@ The Blackjack app is designed to model the behaviour of a real life game
 
 ###### Win, lose, push:
 - If the player has a blackjack and the dealer does not, the player wins
+- If both player and dealer have a blackjack, it's a push
 - If both player and dealer stand, the highest scoring hand wins, with a push declared if the hands are tied
 - If the player stands and the dealer busts, the player wins
 - If the player busts, the house wins
-
-##### Scoring:
-- Scoring is identical to standard blackjack rules
-- each card is mapped to its corresponding points value in a hash, with 2 through 10 worth their numeric value, face cards worth ten, and aces worth 11 or 1 depending on the hand.
-- Scoring is calculated after the initial deal and after each 'hit'
-- Aces are worth 11 by default. If a player would be bust with any aces in their hand, the scoring system automatically adjusts them to 1. Each time scores are calculated it will adjust the minimum number of aces needed, for the player not to be bust. If the player is still bust after all aces are adjusted, they are declared bust and lose the hand.
 
 ## How to use this app
 
 - For fun - enjoy a real game of blackjack through your terminal
 - For profit - practice counting cards and head to Vegas (no liability accepted for any losses incurred)
+
+
 
 ## Testing
 
@@ -86,4 +88,5 @@ Blackjack was built using the following tools and methodologies:
 - OOP
 - TDD
 
-## [rules & history](https://bicyclecards.com/how-to-play/blackjack/)
+## More details on the [rules & history of blackjack](https://bicyclecards.com/how-to-play/blackjack/)
+![historic blackjack](https://www.wopc.co.uk/images/countries/uk/cardhands.jpg)
