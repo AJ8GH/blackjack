@@ -88,12 +88,5 @@ module BlackJack
         expect(game.suit_symbol(five)).to eq '♦︎'
       end
     end
-
-    context '#convert_card_names' do
-      it 'converts symbol to capitalized string' do
-        expect(game.convert_card_names(:spades)).to eq 'Spades'
-        expect(game.convert_card_names(:six)).to eq 'Six'
-      end
-    end
   end
 end

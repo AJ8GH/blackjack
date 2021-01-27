@@ -33,19 +33,17 @@ module BlackJack
     end
 
     def card_name(card)
-      value, suit = [card.value, card.suit].map { |name| convert_card_names(name) }
+      value, suit = [card.value, card.suit].map { |name| name.to_s.capitalize }
       "#{value} #{suit_symbol(card)} #{suit}".cardify
     end
 
     def suit_symbol(card)
-      card_suit = card.suit
-      card_suit == :spades ? '♤' :
-      card_suit == :hearts ? '♥︎' :
-      card_suit == :clubs ? '♧' : '♦︎'
-    end
-
-    def convert_card_names(name)
-      name.to_s.capitalize
+      case card.suit
+        when :spades then '♤'
+        when :hearts then '♥︎'
+        when :clubs then '♧'
+        else '♦︎'
+      end
     end
   end
 end
