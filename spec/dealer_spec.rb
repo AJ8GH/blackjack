@@ -49,7 +49,7 @@ module BlackJack
       it 'creates new deck if deck is empty' do
         allow(STDOUT).to receive(:puts) { nil }
         dealer.deck.cards.clear
-        dealer.replenish_deck
+        dealer.send(:replenish_deck)
         expect(dealer.deck.cards.count).to eq 52
       end
 
@@ -57,7 +57,7 @@ module BlackJack
         allow(STDOUT).to receive(:puts) { nil }
         dealer.deck.cards.clear
         dealer.deck.cards << ace
-        dealer.replenish_deck
+        dealer.send(:replenish_deck)
         expect(dealer.deck.cards.count).to eq 1
       end
     end
@@ -65,7 +65,7 @@ module BlackJack
     context '#dealer_stand?' do
       it 'returns true when dealer score >= 17' do
         dealer.hand << eight << king
-        dealer.calculate_score
+        dealer.send(:calculate_score)
         expect(dealer.dealer_stand?).to be true
       end
     end

@@ -15,15 +15,17 @@ module BlackJack
       deck.cards.delete_at(0)
     end
 
+    def dealer_stand?
+      score >= 17
+    end
+
+    private
+
     def replenish_deck
       if deck.cards.empty?
         self.deck = Deck.new
         puts "\n" + "New deck".starify.double_line_break
       end
-    end
-
-    def dealer_stand?
-      score >= 17
     end
   end
 end
