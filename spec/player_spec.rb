@@ -93,59 +93,59 @@ module BlackJack
       it 'subtracts 10 from score if player busts with one ace' do
         player.hand << jack << five << ace
         player.calculate_score
-        player.ace_adjust
+        player.send(:ace_adjust)
         expect(player.score).to eq 16
       end
 
       it 'subtracts 20 from hand if player busts with 2 aces' do
         player.hand << ace << other_ace << jack << five
         player.calculate_score
-        player.ace_adjust
+        player.send(:ace_adjust)
         expect(player.score).to eq 17
       end
 
       it 'does nothing if no aces in hand' do
         player.hand << jack << five
         player.calculate_score
-        player.ace_adjust
+        player.send(:ace_adjust)
         expect(player.score).to eq 15
       end
 
       it 'subtracts 10 if the hand is 2 aces only' do
         player.hand << ace << other_ace
         player.calculate_score
-        player.ace_adjust
+        player.send(:ace_adjust)
         expect(player.score).to eq 12
       end
 
       it 'does nothing if score is 21' do
         player.hand << ace << jack
         player.calculate_score
-        player.ace_adjust
+        player.send(:ace_adjust)
         expect(player.score).to eq 21
       end
 
       it 'subtracts 10 if the hand is 2 aces and an eight' do
         player.hand << ace << other_ace << eight
         player.calculate_score
-        player.ace_adjust
+        player.send(:ace_adjust)
         expect(player.score).to eq 20
       end
     end
 
     context '#number of aces' do
       it 'counts 0 for empty hand' do
-        expect(player.number_of_aces).to eq 0
+        expect(player.send(:number_of_aces)).to eq 0
       end
 
       it 'returns 1 for 1 ace' do
         player.hand << ace << five
-        expect(player.number_of_aces).to eq 1
+        expect(player.send(:number_of_aces)).to eq 1
       end
 
       it 'returns 2 for 2 aces' do
         player.hand << ace << five << other_ace << jack
-        expect(player.number_of_aces).to eq 2
+        expect(player.send(:number_of_aces)).to eq 2
       end
     end
 
