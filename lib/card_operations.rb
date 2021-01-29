@@ -1,5 +1,8 @@
 module BlackJack
   module CardOperations
+
+    private
+    
     def get_card
       self.card = dealer.deal
     end
