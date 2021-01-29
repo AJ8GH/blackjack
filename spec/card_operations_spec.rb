@@ -1,7 +1,6 @@
 module BlackJack
   describe CardOperations do
     subject (:game) { Game.new(Player.new) }
-
     let (:ace) { Card.new(:ace, :spades) }
     let (:eight) { Card.new(:eight, :clubs) }
     let (:ten) { Card.new(:ten, :hearts) }
