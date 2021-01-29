@@ -8,6 +8,8 @@ module BlackJack
       shuffle_deck
     end
 
+    private
+
     def build
       SUITS.each do |suit|
         VALUES.each { |value, score| cards << Card.new(value, suit) }

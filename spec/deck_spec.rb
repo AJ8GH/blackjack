@@ -21,16 +21,16 @@ module BlackJack
 
     context '#build' do
       it 'adds cards 52 to the deck' do
-        deck.build
+        deck.send(:build)
         expect(deck.cards.count).to eq 104
       end
     end
 
     context '#shuffle_deck' do
       it 'shuffles the deck' do
-        deck.cards.clear; deck.build
+        deck.cards.clear; deck.send(:build)
         cards = deck.cards
-        deck.shuffle_deck
+        deck.send(:shuffle_deck)
         expect(deck.cards).not_to eq cards
       end
     end
